@@ -71,3 +71,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Check manual by:
 --    :help
 --    :help nvim_create_autocmd
+
+-- 07. Check option value by
+--    :set someopt?
+--
+-- Check usage by
+--    :help 'someopt'
+
+-- 08. neovim only load modules inside runtime path. Check current runtime path by:
+--    :echo nvim_list_runtime_paths()
