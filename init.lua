@@ -1,6 +1,6 @@
 -- color theme
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("catppuccin")
 
 -- ===========================================
 -- Options
