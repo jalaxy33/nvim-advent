@@ -1,4 +1,4 @@
--- settings for lua
+-- settings for lua (.lua)
 
 -- ===========================================
 -- Options
