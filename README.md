@@ -1,6 +1,6 @@
 # nvim from scratch
 
-My advent of neovim. 
+Personal nvim configs. 
 
 ## How to use
 
