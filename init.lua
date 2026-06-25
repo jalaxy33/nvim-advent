@@ -1,6 +1,17 @@
+-- ~/.config/nvim/init.lua
+
+
 -- color theme
 vim.opt.termguicolors = true
 vim.cmd.colorscheme("catppuccin")
+
+-- enable experimental `ui2` (v0.12)
+require('vim._core.ui2').enable()
+
+-- enable built-in plugins (v0.12)
+vim.cmd("packadd nvim.undotree")  -- `:Undotree`
+vim.cmd("packadd nvim.difftool")  -- `:DiffTool {left} {right}`
+
 
 -- ===========================================
 -- Options
@@ -14,6 +25,7 @@ vim.opt.showmatch = true -- hightlights matching brackets
 
 vim.opt.mouse = "a" -- enable mouse support
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
+vim.opt.autocomplete = true  -- anable built-in autocomplete (v0.12)
 
 vim.opt.tabstop = 2 -- tabwidth
 vim.opt.shiftwidth = 2 -- indent width
@@ -45,17 +57,39 @@ vim.opt.ttimeoutlen = 0 -- key code timeout
 vim.opt.redrawtime = 10000 -- increase neovim redraw tolerance
 vim.opt.maxmempattern = 20000 -- increase max memory
 
-vim.opt.splitbelow = true -- horizontal splits go below
-vim.opt.splitright = true -- vertical splits go right
+-- vim.opt.splitbelow = true -- horizontal splits go below
+-- vim.opt.splitright = true -- vertical splits go right
+
 
 -- ===========================================
 -- Keymaps
 -- ===========================================
+vim.g.mapleader = " "  -- space for leader key
+vim.g.maplocalleader = " "  -- space for local leader
+
+-- save file
+vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<esc>:w<cr>", { desc = "Save changes" } )
+
+-- better change/delete
+vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" } )
+vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" } )
+
+-- buffers
+vim.keymap.set("n", "<C-[>", "<cmd>bprevious<cr>", { desc = "Previous buffer"} )
+vim.keymap.set("n", "<C-]>", "<cmd>bnext<cr>", { desc = "Next buffer"} )
+
+-- Move to window using <ctrl> hjkl
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" } )
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" } )
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" } )
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" } )
 
 -- Run lua scripts
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<cr>")
-vim.keymap.set("n", "<space>x", ":.lua<cr>")
-vim.keymap.set("v", "<space>x", ":lua<cr>")
+vim.keymap.set("n", "<leader><leader>r", ":restart<cr>", {desc = "Restart neovim" } )
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Run entire lua file" } )
+vim.keymap.set("n", "<leader>x", ":.lua<cr>", { desc = "Run one lua line" })
+vim.keymap.set("v", "<leader>x", ":lua<cr>", { desc = "Run one lua line" } )
+
 
 -- ===========================================
 -- Auto Commands
@@ -71,3 +105,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
