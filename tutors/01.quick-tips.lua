@@ -80,3 +80,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- 08. neovim only load modules inside runtime path. Check current runtime path by:
 --    :echo nvim_list_runtime_paths()
+
+-- 09. Open yank register by
+--    :reg
