@@ -1,4 +1,4 @@
--- settings for markdown
+-- settings for markdown (.md)
 
 -- ===========================================
 -- Options
