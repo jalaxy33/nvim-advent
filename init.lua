@@ -1,11 +1,3 @@
--- ~/.config/nvim/init.lua
---
--- Reference:
---    https://www.youtube.com/watch?v=lljs_7xB7Ps
---    https://www.youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM
---    https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-
-
 -- color theme
 vim.opt.termguicolors = true
 vim.cmd.colorscheme("catppuccin")
@@ -16,7 +8,6 @@ vim.cmd.colorscheme("catppuccin")
 -- enable built-in plugins (v0.12)
 vim.cmd("packadd nvim.undotree")  -- `:Undotree`
 vim.cmd("packadd nvim.difftool")  -- `:DiffTool {left} {right}`
-
 
 -- ===========================================
 -- Options
@@ -36,3 +27,13 @@ require("config.keymaps")  -- load general keymaps settings
 
 require("config.autocmds")
 
+-- ===========================================
+-- Plugins
+-- ===========================================
+
+local USE_LAZY = false
+if USE_LAZY then
+  require("plugins.lazy")  -- use `lazy.nvim` as package manager
+else
+  require("plugins.pack")  -- use `vim.pack` as package manager
+end
