@@ -1,4 +1,4 @@
-# nvim from scratch
+# nvim-advent
 
 My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simple and Stupid) principle.
 
@@ -64,8 +64,8 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 
 ## Inspirations
 
-- The Rad Lectures - [The Perfect NeoVim Setup for 2026](https://www.youtube.com/watch?v=lljs_7xB7Ps)
 - TJ DeVries - [Advent of Neovim](https://www.youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM)
+- The Rad Lectures - [The Perfect NeoVim Setup for 2026](https://www.youtube.com/watch?v=lljs_7xB7Ps)
 - LazyVim [keymaps.lua](https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua)
 
 
