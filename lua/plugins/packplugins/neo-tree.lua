@@ -17,7 +17,7 @@ M.setup = function()
 		"https://github.com/nvim-lua/plenary.nvim",
 		"https://github.com/MunifTanjim/nui.nvim",
 		-- optional, but recommended
-		--"https://github.com/nvim-tree/nvim-web-devicons",
+		"https://github.com/nvim-tree/nvim-web-devicons",
 	})
 
   -- options
