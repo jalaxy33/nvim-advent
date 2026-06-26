@@ -89,3 +89,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- 10. Open yank register by
 --    :reg
+
+-- 11. Get current config directory (where init.lua is)
+--    vim.fn.stdpath("config")
+--
+--  Get current data directory (where plugins are installed)
+--    vim.fn.stdpath("data)
