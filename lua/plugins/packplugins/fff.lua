@@ -1,5 +1,7 @@
 -- `fff.nvim` using vim.pack
 --
+-- Fuzzy finder, extremely fast.
+--
 -- New commands
 --  `:FFFScan`                            - Rescan files.
 --  `:FFFRefreshGit`                      - Refresh git status.

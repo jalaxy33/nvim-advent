@@ -9,11 +9,16 @@ local function load_plugin(pluginroot, name)
   require(pluginroot .. "." .. name).setup()
 end
 
+
 -- ===========================================
--- Helper Functions
+-- Load Plugins
 -- ===========================================
 local pluginroot = "plugins.packplugins"
 
-load_plugin(pluginroot, "mini")
-load_plugin(pluginroot, "neo-tree")
-load_plugin(pluginroot, "fff")
+-- helper modules for `vim.pack`
+load_plugin(pluginroot, "pack-helper")
+
+-- external plugins
+load_plugin(pluginroot, "mini")  -- useful collections for statusline and more
+load_plugin(pluginroot, "neo-tree")  -- tree-style file browser
+load_plugin(pluginroot, "fff")  -- fuzzy finder

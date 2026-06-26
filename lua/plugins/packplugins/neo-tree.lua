@@ -1,4 +1,6 @@
--- `neo-tree` using vim.pack
+-- `neo-tree.nvim` using vim.pack
+--
+--  Tree-style file browser.
 --
 --  New commands:
 --    `:Neotree`

@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous
 vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next tab" } )
 
 -- split/close window
-vim.keymap.set("n", "<leader>sv", ":vsplit<cr>", { desc = "Split window vertically" })  -- or `<C-w>v`
-vim.keymap.set("n", "<leader>hv", ":split<cr>", { desc = "Split window horizontally" }) -- or `<C-w>s`
+vim.keymap.set("n", "<leader>sv", ":vsplit<cr>", { desc = "Split window Vertically" })  -- or `<C-w>v`
+vim.keymap.set("n", "<leader>sh", ":split<cr>", { desc = "Split window Horizontally" }) -- or `<C-w>s`
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete window" })
 
 -- Move to window using <ctrl> hjkl
