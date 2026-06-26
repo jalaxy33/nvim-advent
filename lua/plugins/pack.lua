@@ -14,9 +14,10 @@ end
 -- Load Plugins
 -- ===========================================
 local pluginroot = "plugins.packplugins"
+local customroot = pluginroot .. "." .. "customs"
 
--- helper modules for `vim.pack`
-load_plugin(pluginroot, "pack-helper")
+-- custom modules
+load_plugin(customroot, "pack-helper")  -- helpers for `vim.pack`
 
 -- external plugins
 load_plugin(pluginroot, "mini")  -- useful collections for statusline and more
