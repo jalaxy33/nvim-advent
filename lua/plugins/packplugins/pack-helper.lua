@@ -1,0 +1,46 @@
+-- Helpers for `vim.pack` plugin manager
+--
+local M = {}
+M.setup = function()
+
+-- ===========================================
+-- Helper Functions
+-- ===========================================
+
+-- Clean unused plugins
+local function pack_clean()
+  local active_plugins = {}
+  local unused_plugins = {}
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    active_plugins[plugin.spec.name] = plugin.active
+  end
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    if not active_plugins[plugin.spec.name] then
+        table.insert(unused_plugins, plugin.spec.name)
+    end
+  end
+
+  if #unused_plugins == 0 then
+    print("No unused plugins.")
+    return
+  end
+
+  local choice = vim.fn.confirm("Remove unused plugins? (default: Yes)", "&Yes\n&No", 1)
+  if choice == 1 then
+    vim.pack.del(unused_plugins)
+  end
+end
+
+
+-- ===========================================
+-- Keymaps
+-- ===========================================
+
+vim.keymap.set("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Plugins" })
+vim.keymap.set("n", "<leader>pc", pack_clean, { desc = "Clean unused plugins" })
+
+
+end
+return M
