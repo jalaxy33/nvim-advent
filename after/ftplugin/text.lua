@@ -1,4 +1,4 @@
--- settings for markdown (.md)
+-- settings for vanila text file
 
 -- ===========================================
 -- Options

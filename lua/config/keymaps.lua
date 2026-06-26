@@ -3,7 +3,7 @@
 -- ===========================================
 
 vim.g.mapleader = " "  -- space for leader key
-vim.g.maplocalleader = " "  -- space for local leader
+vim.g.maplocalleader = "\\"  -- space for local leader
 
 -- save file
 vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<esc>:w<cr>", { desc = "Save changes" } )
@@ -72,5 +72,5 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
 vim.keymap.set("n", "%", "<cmd>normal ggVG<cr>", { desc = "Select all" })
 
 -- Restart editor
-vim.keymap.set("n", "<leader><leader>r", ":restart<cr>", {desc = "Restart neovim" } )
+vim.keymap.set("n", "<leader>R", ":restart<cr>", {desc = "Restart neovim" } )
 

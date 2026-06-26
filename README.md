@@ -62,3 +62,10 @@ Personal nvim configs.
   nvim
   ```
 
+## Inspirations
+
+- The Rad Lectures - [The Perfect NeoVim Setup for 2026](https://www.youtube.com/watch?v=lljs_7xB7Ps)
+- TJ DeVries - [Advent of Neovim](https://www.youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM)
+- LazyVim [keymaps.lua](https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua)
+
+
