@@ -1,6 +1,6 @@
 # nvim from scratch
 
-Personal nvim configs. 
+My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simple and Stupid) principle.
 
 ## How to use
 

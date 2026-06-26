@@ -35,5 +35,5 @@ local USE_LAZY = false
 if USE_LAZY then
   require("plugins.lazy")  -- use `lazy.nvim` as package manager
 else
-  require("plugins.pack")  -- use `vim.pack` as package manager
+  require("plugins.pack")  -- use `vim.pack` as package manager (v0.12)
 end
