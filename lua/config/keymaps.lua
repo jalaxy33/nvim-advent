@@ -68,8 +68,8 @@ vim.keymap.set("x", "<C-/>", "gc<Esc>gv", { remap = true, desc = "Toggle comment
 -- quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
 
--- select whole file
-vim.keymap.set("n", "%", "<cmd>normal ggVG<cr>", { desc = "Select all" })
+-- select all
+vim.keymap.set("n", "<C-a>", "<cmd>normal ggVG<cr>", { desc = "Select all" })
 
 -- Restart editor
 vim.keymap.set("n", "<leader>R", ":restart<cr>", {desc = "Restart neovim" } )
