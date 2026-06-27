@@ -1,11 +1,8 @@
 -- Helpers for `vim.pack` plugin manager
---
-local M = {}
-M.setup = function()
 
--- ===========================================
+-- ===================================
 -- Helper Functions
--- ===========================================
+-- ===================================
 
 -- Clean unused plugins
 local function pack_clean()
@@ -34,13 +31,9 @@ local function pack_clean()
 end
 
 
--- ===========================================
+-- ===================================
 -- Keymaps
--- ===========================================
+-- ===================================
 
 vim.keymap.set("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Plugins" })
 vim.keymap.set("n", "<leader>pc", pack_clean, { desc = "Clean unused plugins" })
-
-
-end
-return M

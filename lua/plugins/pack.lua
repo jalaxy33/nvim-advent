@@ -1,25 +1,26 @@
 -- use `vim.pack` as package manager
 
 
--- ===========================================
+-- ===================================
 -- Helper Functions
--- ===========================================
+-- ===================================
 
 local function load_plugin(pluginroot, name)
-  require(pluginroot .. "." .. name).setup()
+  require(pluginroot .. "." .. name)
 end
 
 
--- ===========================================
+-- ===================================
 -- Load Plugins
--- ===========================================
-local pluginroot = "plugins.packplugins"
-local customroot = pluginroot .. "." .. "customs"
+-- ===================================
 
--- custom modules
-load_plugin(customroot, "pack-helper")  -- helpers for `vim.pack`
+local packroot = "plugins.packplugins"
+local plugindir = packroot .. "." .. "plugins"
 
--- external plugins
-load_plugin(pluginroot, "mini")  -- useful collections for statusline and more
-load_plugin(pluginroot, "neo-tree")  -- tree-style file browser
-load_plugin(pluginroot, "fff")  -- fuzzy finder
+-- modules for `vim.pack`
+load_plugin(packroot, "pack-helper")  -- helper module
+
+-- 3rd-party plugins
+load_plugin(plugindir, "mini")  -- useful collections for statusline and more
+load_plugin(plugindir, "neo-tree")  -- tree-style file browser
+load_plugin(plugindir, "fff")  -- fuzzy finder
