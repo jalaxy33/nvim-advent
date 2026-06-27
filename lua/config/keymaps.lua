@@ -1,6 +1,6 @@
--- ===========================================
+-- ===================================
 -- General keymap settings
--- ===========================================
+-- ===================================
 
 vim.g.mapleader = " "  -- space for leader key
 vim.g.maplocalleader = "\\"  -- space for local leader
