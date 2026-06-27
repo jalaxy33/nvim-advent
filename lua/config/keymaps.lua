@@ -65,6 +65,9 @@ vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
 vim.keymap.set({ "n", "i" }, "<C-/>", "<cmd>normal gcc<cr>", { remap = true, desc = "Toggle Comment" } )
 vim.keymap.set("x", "<C-/>", "gc<Esc>gv", { remap = true, desc = "Toggle comment and reselect" })
 
+-- terminal mode
+vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
 
