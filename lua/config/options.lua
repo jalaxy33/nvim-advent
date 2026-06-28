@@ -44,5 +44,5 @@ vim.opt.ttimeoutlen = 0 -- key code timeout
 vim.opt.redrawtime = 10000 -- increase neovim redraw tolerance
 vim.opt.maxmempattern = 20000 -- increase max memory
 
-vim.opt.splitbelow = true  -- :vsplit new window to below
-vim.opt.splitright = true  -- :split new window to right
+--vim.opt.splitbelow = true  -- :vsplit new window to below
+--vim.opt.splitright = true  -- :split new window to right

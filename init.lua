@@ -3,7 +3,9 @@ vim.opt.termguicolors = true
 vim.cmd.colorscheme("catppuccin")
 
 -- enable experimental `ui2` (v0.12)
---require('vim._core.ui2').enable()
+require('vim._core.ui2').enable({ 
+  enable = true,  -- Whether to enable or disable the UI
+})
 
 -- enable built-in plugins (v0.12)
 vim.cmd("packadd nvim.undotree")  -- `:Undotree`
