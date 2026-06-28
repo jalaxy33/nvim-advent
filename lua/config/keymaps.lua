@@ -17,10 +17,11 @@ vim.keymap.set("n", "<leader>{", "<cmd>bprevious<cr>", { desc = "Previous buffer
 vim.keymap.set("n", "<leader>}", "<cmd>bnext<cr>", { desc = "Next buffer"} )
 
 -- tabs
-vim.keymap.set("n", "<leader><tab>n", "<cmd>tabnew<cr>", {desc = "New tab"})
-vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", {desc = "Delete/Close tab"})
-vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous tab" } )
-vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next tab" } )
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", {desc = "New tab"})
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", {desc = "Close Current tab"})
+vim.keymap.set("n", "<leader><tab>o", "<cmd>tabclose<cr>", {desc = "Close Other tabs"})
+vim.keymap.set("n", "<leader><tab>h", "<cmd>tabprevious<cr>", { desc = "Previous tab" } )
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tabnext<cr>", { desc = "Next tab" } )
 
 -- split/close window
 vim.keymap.set("n", "<leader>sv", ":vsplit<cr>", { desc = "Split window Vertically" })  -- or `<C-w>v`
