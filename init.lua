@@ -3,9 +3,9 @@ vim.opt.termguicolors = true
 vim.cmd.colorscheme("catppuccin")
 
 -- enable experimental `ui2` (v0.12)
-require('vim._core.ui2').enable({ 
-  enable = true,  -- Whether to enable or disable the UI
-})
+-- require('vim._core.ui2').enable({ 
+--   enable = false,  -- Whether to enable or disable the UI
+-- })
 
 -- enable built-in plugins (v0.12)
 vim.cmd("packadd nvim.undotree")  -- `:Undotree`
@@ -39,3 +39,10 @@ if USE_LAZY then
 else
   require("plugins.pack")  -- use `vim.pack` as package manager (v0.12)
 end
+
+-- ===================================
+-- LSP
+-- ===================================
+
+require("config.lsp")
+

@@ -95,3 +95,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --
 --  Get current data directory (where plugins are installed)
 --    vim.fn.stdpath("data)
+
+-- 12. You can check you keymaps by:
+--    :map
