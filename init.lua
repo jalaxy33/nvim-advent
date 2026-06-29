@@ -1,33 +1,26 @@
--- color theme
-vim.opt.termguicolors = true
-vim.cmd.colorscheme("catppuccin")
+-- ===================================
+-- UI
+-- ===================================
 
--- enable experimental `ui2` (v0.12)
--- require('vim._core.ui2').enable({ 
---   enable = false,  -- Whether to enable or disable the UI
--- })
-
--- enable built-in plugins (v0.12)
-vim.cmd("packadd nvim.undotree")  -- `:Undotree`
-vim.cmd("packadd nvim.difftool")  -- `:DiffTool {left} {right}`
+require("core.ui")
 
 -- ===================================
 -- Options
 -- ===================================
 
-require("config.options")  -- load general options
+require("core.options") -- load general options
 
 -- ===================================
 -- Keymaps
 -- ===================================
 
-require("config.keymaps")  -- load general keymaps settings
+require("core.keymaps") -- load general keymaps settings
 
 -- ===================================
 -- Auto Commands
 -- ===================================
 
-require("config.autocmds")
+require("core.autocmds")
 
 -- ===================================
 -- Plugins
@@ -35,14 +28,18 @@ require("config.autocmds")
 
 local USE_LAZY = false
 if USE_LAZY then
-  require("plugins.lazy")  -- use `lazy.nvim` as package manager
+  require("plugins.lazy") -- use `lazy.nvim` as package manager
 else
-  require("plugins.pack")  -- use `vim.pack` as package manager (v0.12)
+  require("plugins.pack") -- use `vim.pack` as package manager (v0.12)
 end
+
+-- enable built-in plugins (v0.12)
+vim.cmd("packadd nvim.undotree") -- `:Undotree`
+vim.cmd("packadd nvim.difftool") -- `:DiffTool {left} {right}`
+
 
 -- ===================================
 -- LSP
 -- ===================================
 
-require("config.lsp")
-
+require("core.lsp")

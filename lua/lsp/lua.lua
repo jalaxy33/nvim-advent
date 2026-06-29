@@ -1,13 +1,10 @@
--- ===================================
--- LSP settings
--- ===================================
-
-
+-- lsp config for [lua]
 --
--- Configurations
+-- LSP provided by `lua_ls` (`lua-language-server`). Please install it first.
 --
 
--- lua
+
+-- Config LSP
 vim.lsp.config("lua_ls", {
   on_init = function(client)
     if client.workspace_folders then
@@ -52,15 +49,14 @@ vim.lsp.config("lua_ls", {
     Lua = {
       diagnostics = { globals = { "vim" } },
       telemetry = { enable = false },
+      completion = { callSnipper = "Replace" },
     },
   },
 })
 
 
---
 -- Enable LSP
---
-
 vim.lsp.enable({
   'lua_ls',
 })
+

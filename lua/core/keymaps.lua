@@ -1,16 +1,40 @@
--- ===================================
+-- core/keymaps.lua
+--
 -- General keymap settings
--- ===================================
+--
 
 vim.g.mapleader = " "  -- space for leader key
-vim.g.maplocalleader = "\\"  -- space for local leader
+vim.g.maplocalleader = " "  -- space for local leader
+
+
+-- ===================================
+-- Editor
+-- ===================================
 
 -- save file
 vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<esc>:w<cr>", { desc = "Save changes" } )
 
--- better change/delete
-vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" } )
-vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" } )
+-- select all
+vim.keymap.set("n", "<C-a>", "<cmd>normal ggVG<cr>", { desc = "Select all" })
+
+-- quit
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
+
+-- Restart editor
+vim.keymap.set("n", "<leader>re", ":restart<cr>", {desc = "Restart neovim" } )
+
+-- clear search
+vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
+    vim.cmd("noh")
+    return "<esc>"
+  end, { expr = true, desc = "Escape and Clear hlsearch" }
+)
+
+
+-- ===================================
+-- Window, Buffer & Tab
+-- ===================================
+
 
 -- buffers
 vim.keymap.set("n", "<leader>{", "<cmd>bprevious<cr>", { desc = "Previous buffer"} )
@@ -40,6 +64,15 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window 
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
+
+-- ===================================
+-- Editting Behaviors
+-- ===================================
+
+-- better change/delete
+vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" } )
+vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" } )
+
 -- Move lines
 vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
@@ -55,26 +88,21 @@ vim.keymap.set("x", ">", ">gv", { desc = "Indent right and Reselect" })
 -- better join lines
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
--- clear search
-vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
-    vim.cmd("noh")
-    return "<esc>"
-  end, { expr = true, desc = "Escape and Clear hlsearch" }
-)
-
 -- commenting
 vim.keymap.set({ "n", "i" }, "<C-/>", "<cmd>normal gcc<cr>", { remap = true, desc = "Toggle Comment" } )
 vim.keymap.set("x", "<C-/>", "gc<Esc>gv", { remap = true, desc = "Toggle comment and reselect" })
 
+
+-- ===================================
+-- LSP
+-- ===================================
+
+vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.omnifunc()<cr>", { desc = "Trigger completetion Hint" })  -- or `<C-x><C-o>`
+
+-- ===================================
 -- terminal mode
+-- ===================================
+
+-- Exit terminal mode
 vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- quit
-vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
-
--- select all
-vim.keymap.set("n", "<C-a>", "<cmd>normal ggVG<cr>", { desc = "Select all" })
-
--- Restart editor
-vim.keymap.set("n", "<leader>R", ":restart<cr>", {desc = "Restart neovim" } )
 
