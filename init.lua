@@ -5,7 +5,7 @@
 require("core.ui")
 
 -- ===================================
--- Options
+-- Options & Global Variables
 -- ===================================
 
 require("core.options") -- load general options
@@ -42,4 +42,4 @@ vim.cmd("packadd nvim.difftool") -- `:DiffTool {left} {right}`
 -- LSP
 -- ===================================
 
-require("core.lsp")
+require("core.lsp")  -- setup LSP servers

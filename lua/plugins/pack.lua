@@ -18,13 +18,12 @@ local packroot = "plugins.packplugins"
 local plugindir = packroot .. "." .. "plugins"
 
 -- modules for `vim.pack`
-load_plugin(packroot, "pack-helper")  -- helper module
+load_plugin(packroot, "pack-helper") -- helper module
 
 -- LSP
 load_plugin(plugindir, "nvim-lspconfig")
 
 -- 3rd-party plugins
-load_plugin(plugindir, "mini")  -- useful collections for statusline and more
-load_plugin(plugindir, "neo-tree")  -- tree-style file browser
-load_plugin(plugindir, "fff")  -- fuzzy finder
-
+load_plugin(plugindir, "mini")     -- useful collections for statusline and more
+load_plugin(plugindir, "neo-tree") -- tree-style file browser
+load_plugin(plugindir, "fff")      -- fuzzy finder
