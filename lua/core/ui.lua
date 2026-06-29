@@ -10,7 +10,7 @@ vim.cmd.colorscheme("catppuccin")
 -- enable experimental `ui2` (v0.12)
 --  hit `g<` to jump into message buffer
 require('vim._core.ui2').enable({
-  enable = true, -- Whether to enable or disable the UI
+  enable = false, -- Whether to enable or disable the UI
   -- msg = {
   --   target = "cmd",
   --   paper = { height = 0.5 },
