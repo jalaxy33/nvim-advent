@@ -33,13 +33,13 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
   - Linux/MacOS
 
     ```sh
-    git clone https://github.com/jalaxy33/nvim-from-scratch ~/.config/nvim
+    git clone https://github.com/jalaxy33/nvim-advent ~/.config/nvim
     ```
 
   - Windows (with powershell)
 
     ```sh
-    git clone https://github.com/jalaxy33/nvim-from-scratch $env:LOCALAPPDATA\nvim
+    git clone https://github.com/jalaxy33/nvim-advent $env:LOCALAPPDATA\nvim
     ```
 
 - (Optional) Remove the `.git` folder, so you can add it to your own repo later
