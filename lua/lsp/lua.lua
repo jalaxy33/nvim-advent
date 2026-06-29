@@ -1,6 +1,7 @@
--- lsp config for [lua]
+-- lsp config for `lua` (.lua)
 --
 -- LSP provided by `lua_ls` (`lua-language-server`). Please install it first.
+--    https://github.com/LuaLS/lua-language-server
 --
 
 
