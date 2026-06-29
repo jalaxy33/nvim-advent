@@ -1,7 +1,11 @@
 -- core/options.lua
 --
--- General option settings
+-- Options & Custom Global variables
 --
+
+-- ===================================
+-- Options
+-- ===================================
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,7 +30,7 @@ vim.opt.smartcase = true      -- case sensitive if uppercase in string
 vim.opt.hlsearch = true       -- highlight search matches
 vim.opt.incsearch = true      -- show matches as you type
 
-vim.opt.pumheight = 8        -- popup menu height
+vim.opt.pumheight = 8         -- popup menu height
 vim.opt.pumblend = 10         -- popup menu transparent
 vim.opt.pumborder = 'rounded' -- set popup menu border style
 vim.opt.winblend = 5          -- floating window transparency
@@ -48,7 +52,12 @@ vim.opt.maxmempattern = 20000 -- increase max memory
 --vim.opt.splitbelow = true  -- :vsplit new window to below
 --vim.opt.splitright = true  -- :split new window to right
 
-vim.opt.autocomplete = true -- enable built-in autocomplete (v0.12)
-vim.opt.complete:append('o')
-vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
+vim.opt.autocomplete = true                                          -- enable built-in autocomplete (v0.12), press <C-e> to exit.
+vim.opt.complete:append('o')                                         -- integrate completion with LSP
+vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect', 'fuzzy' } -- completion behaviors
 
+-- ===================================
+-- Custom Global Varables
+-- ===================================
+
+vim.g.format_on_save = false

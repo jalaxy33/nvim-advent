@@ -3,8 +3,8 @@
 -- General keymap settings
 --
 
-vim.g.mapleader = " "  -- space for leader key
-vim.g.maplocalleader = " "  -- space for local leader
+vim.g.mapleader = " "      -- space for leader key
+vim.g.maplocalleader = " " -- space for local leader
 
 
 -- ===================================
@@ -12,22 +12,22 @@ vim.g.maplocalleader = " "  -- space for local leader
 -- ===================================
 
 -- save file
-vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<esc>:w<cr>", { desc = "Save changes" } )
+vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<esc>:w<cr>", { desc = "Save changes" })
 
 -- select all
 vim.keymap.set("n", "<C-a>", "<cmd>normal ggVG<cr>", { desc = "Select all" })
 
 -- quit
-vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" } )
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- Restart editor
-vim.keymap.set("n", "<leader>re", ":restart<cr>", {desc = "Restart neovim" } )
+vim.keymap.set("n", "<leader>re", ":restart<cr>", { desc = "Restart neovim" })
 
 -- clear search
 vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
-    vim.cmd("noh")
-    return "<esc>"
-  end, { expr = true, desc = "Escape and Clear hlsearch" }
+  vim.cmd("noh")
+  return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" }
 )
 
 
@@ -37,15 +37,15 @@ vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
 
 
 -- buffers
-vim.keymap.set("n", "<leader>{", "<cmd>bprevious<cr>", { desc = "Previous buffer"} )
-vim.keymap.set("n", "<leader>}", "<cmd>bnext<cr>", { desc = "Next buffer"} )
+vim.keymap.set("n", "<leader>{", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>}", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- tabs
-vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", {desc = "New tab"})
-vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", {desc = "Close Current tab"})
-vim.keymap.set("n", "<leader><tab>o", "<cmd>tabclose<cr>", {desc = "Close Other tabs"})
-vim.keymap.set("n", "<leader><tab>h", "<cmd>tabprevious<cr>", { desc = "Previous tab" } )
-vim.keymap.set("n", "<leader><tab>l", "<cmd>tabnext<cr>", { desc = "Next tab" } )
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Current tab" })
+vim.keymap.set("n", "<leader><tab>o", "<cmd>tabclose<cr>", { desc = "Close Other tabs" })
+vim.keymap.set("n", "<leader><tab>h", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- split/close window
 vim.keymap.set("n", "<leader>sv", ":vsplit<cr>", { desc = "Split window Vertically" })  -- or `<C-w>v`
@@ -53,10 +53,10 @@ vim.keymap.set("n", "<leader>sh", ":split<cr>", { desc = "Split window Horizonta
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete window" })
 
 -- Move to window using <ctrl> hjkl
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" } )
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" } )
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" } )
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" } )
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 -- Resize window using <ctrl> arrow keys
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -70,8 +70,8 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 -- ===================================
 
 -- better change/delete
-vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" } )
-vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" } )
+vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" })
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
@@ -89,15 +89,18 @@ vim.keymap.set("x", ">", ">gv", { desc = "Indent right and Reselect" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
 -- commenting
-vim.keymap.set({ "n", "i" }, "<C-/>", "<cmd>normal gcc<cr>", { remap = true, desc = "Toggle Comment" } )
+vim.keymap.set({ "n", "i" }, "<C-/>", "<cmd>normal gcc<cr>", { remap = true, desc = "Toggle Comment" })
 vim.keymap.set("x", "<C-/>", "gc<Esc>gv", { remap = true, desc = "Toggle comment and reselect" })
 
 
 -- ===================================
--- LSP
+-- LSP, Formatting
 -- ===================================
 
-vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.omnifunc()<cr>", { desc = "Trigger completetion Hint" })  -- or `<C-x><C-o>`
+vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.omnifunc()<cr>", { desc = "Trigger completetion Hint" }) -- or `<C-x><C-o>`
+vim.keymap.set({ "n", "i", "x" }, "<A-F>", function() vim.lsp.buf.format() end, { desc = "Format code" })
+vim.keymap.set({ "n", "i" }, "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol under cursor" })
+
 
 -- ===================================
 -- terminal mode
@@ -105,4 +108,3 @@ vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.omnifunc()<cr>", { desc = "Trigge
 
 -- Exit terminal mode
 vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-

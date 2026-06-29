@@ -47,11 +47,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 
--- Auto-trigger LSP completion
+-- Auto-trigger LSP completion & Conditional format-on-write
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  group = augroup,
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    if not client then return end -- early return when no client exist
 
     -- if client:supports_method('textDocument/implementation') then
     --   -- Create a keymap for vim.lsp.buf.implementation ...
@@ -64,6 +65,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- client.server_capabilities.completionProvider.triggerCharacters = chars
 
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+
+
+    -- Auto-format ("lint") on save.
+    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    -- Set auto-format with `format_on_save` global var
+    if vim.g.format_on_save
+        and not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
     end
   end,
 })

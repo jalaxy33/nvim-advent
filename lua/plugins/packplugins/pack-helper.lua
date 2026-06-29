@@ -15,7 +15,7 @@ local function pack_clean()
 
   for _, plugin in ipairs(vim.pack.get()) do
     if not active_plugins[plugin.spec.name] then
-        table.insert(unused_plugins, plugin.spec.name)
+      table.insert(unused_plugins, plugin.spec.name)
     end
   end
 
