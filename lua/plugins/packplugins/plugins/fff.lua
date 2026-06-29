@@ -42,3 +42,5 @@ vim.keymap.set('n', '<leader>ff', function() require('fff').find_files() end, { 
 vim.keymap.set('n', '<leader>fg', function() require('fff').live_grep() end, { desc = 'LiFFFe Grep' })
 vim.keymap.set('n', '<leader>fz',
   function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end, { desc = 'Live fffuzy Grep' })
+vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() require('fff').live_grep_under_cursor() end,
+  { desc = 'Search current word / selection' })
