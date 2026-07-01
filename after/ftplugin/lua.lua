@@ -3,7 +3,7 @@
 -- ===========================================
 -- Options
 -- ===========================================
-vim.opt_local.tabstop = 2 -- tabwidth
+vim.opt_local.tabstop = 2    -- tabwidth
 vim.opt_local.shiftwidth = 2 -- indent width
 vim.opt_local.softtabstop = 2
 
@@ -12,6 +12,10 @@ vim.opt_local.softtabstop = 2
 -- ===========================================
 
 -- Run lua scripts
-vim.keymap.set("n", "<leader>X", "<cmd>source %<cr>", { desc = "Run entire lua file" })
+vim.keymap.set("n", "<leader>X", function()
+  vim.cmd("source %")
+  vim.notify("source " .. vim.fn.expand("%"))
+end, { desc = "Run current lua script" })
+
 vim.keymap.set("n", "<leader>x", ":.lua<cr>", { desc = "Run one lua line" })
 vim.keymap.set("v", "<leader>x", ":lua<cr>", { desc = "Run one lua line" })

@@ -26,8 +26,8 @@ require("core.autocmds")
 -- Plugins
 -- ===================================
 
-local USE_LAZY = false
-if USE_LAZY then
+vim.g.use_lazy = false
+if vim.g.use_lazy then
   require("plugins.lazy") -- use `lazy.nvim` as package manager
 else
   require("plugins.pack") -- use `vim.pack` as package manager (v0.12)
@@ -42,4 +42,4 @@ vim.cmd("packadd nvim.difftool") -- `:DiffTool {left} {right}`
 -- LSP
 -- ===================================
 
-require("core.lsp")  -- setup LSP servers
+require("core.lsp") -- setup LSP servers

@@ -22,15 +22,18 @@
 --
 
 
-
 -- ===================================
 -- Global LSP Settings
 -- ===================================
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+vim.lsp.config('*', { capabilities = capabilities })
 
-vim.lsp.config('*', {
-  capabilities = capabilities
+--- diagnostic configs
+vim.diagnostic.config({
+  virtual_text = true,      -- inline diagnostic
+  underline = true,         -- diagnostic underline
+  update_in_insert = false, -- update in insert mode
 })
 
 

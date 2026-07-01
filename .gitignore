@@ -1,2 +1,5 @@
+/.pi
+/.claude
+
 nvim-pack-lock.json
 lazy-lock.json
