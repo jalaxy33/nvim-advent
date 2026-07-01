@@ -34,13 +34,35 @@ vim.g.fff = {
   debug = { enabled = true, show_scores = true },
 }
 
--- options
+--- options ---
 require("fff").setup({})
 
--- keymaps
-vim.keymap.set('n', '<leader>ff', function() require('fff').find_files() end, { desc = 'FFFind files' })
-vim.keymap.set('n', '<leader>fg', function() require('fff').live_grep() end, { desc = 'LiFFFe Grep' })
+--- keymaps ---
+local FFF = require("fff")
+
+vim.keymap.set('n', '<leader>ff', function() FFF.find_files() end, { desc = 'FFFind files' })
+vim.keymap.set('n', '<leader>fg', function() FFF.live_grep() end, { desc = 'LiFFFe Grep' })
 vim.keymap.set('n', '<leader>fz',
-  function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end, { desc = 'Live fffuzy Grep' })
-vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() require('fff').live_grep_under_cursor() end,
+  function() FFF.live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end, { desc = 'Live fffuzy Grep' })
+vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() FFF.live_grep_under_cursor() end,
   { desc = 'Search current word / selection' })
+
+
+--- autocmds ---
+
+-- Temporarily disable builtin autocomplete in FFF ui (which is annoying)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'fff_input',
+  callback = function(ev)
+    if vim.fn.exists('&autocomplete') ~= 1 then return end -- skip if option is unavailable
+    local saved = vim.o.autocomplete
+    vim.o.autocomplete = false
+    vim.api.nvim_create_autocmd('BufWipeout', {
+      buffer = ev.buf,
+      once = true,
+      callback = function()
+        vim.o.autocomplete = saved
+      end,
+    })
+  end,
+})

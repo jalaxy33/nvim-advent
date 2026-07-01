@@ -30,6 +30,13 @@ vim.keymap.set({ "n", "i", "s" }, "<esc>", function()
 end, { expr = true, desc = "Escape and Clear hlsearch" }
 )
 
+-- native undotree
+vim.keymap.set("n", "<leader>u", function()
+  vim.cmd.packadd("nvim.undotree")
+  require("undotree").open()
+end, { desc = "Toggle Builtin Undotree" })
+
+
 
 -- ===================================
 -- Window, Buffer & Tab
@@ -70,8 +77,9 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 -- ===================================
 
 -- better change/delete
-vim.keymap.set({ "n", "x" }, "<M-d>", '"_d', { desc = "Delete without yanking" })
-vim.keymap.set({ "n", "x" }, "<M-c>", '"_c', { desc = "Change without yanking" })
+vim.keymap.set({ "n", "x" }, "<A-d>", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set({ "n", "x" }, "<A-c>", '"_c', { desc = "Change without yanking" })
+vim.keymap.set("x", "<A-p>", '"_p', { desc = "Paste without yanking" })
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
@@ -92,14 +100,17 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 vim.keymap.set({ "n", "i" }, "<C-/>", "<cmd>normal gcc<cr>", { remap = true, desc = "Toggle Comment" })
 vim.keymap.set("x", "<C-/>", "gc<Esc>gv", { remap = true, desc = "Toggle comment and reselect" })
 
+-- better move up/down
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move Down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move Up in buffer with cursor centered" })
 
--- ===================================
--- LSP, Formatting
--- ===================================
+-- better search move
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor center" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor center" })
 
-vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.omnifunc()<cr>", { desc = "Trigger completetion Hint" }) -- or `<C-x><C-o>`
-vim.keymap.set({ "n", "i", "x" }, "<A-F>", function() vim.lsp.buf.format() end, { desc = "Format code" })
-vim.keymap.set({ "n", "i" }, "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename Symbol under cursor" })
+-- Quick replacement
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace word under cursor" })
 
 
 -- ===================================
@@ -108,3 +119,36 @@ vim.keymap.set({ "n", "i" }, "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc
 
 -- Exit terminal mode
 vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+
+-- ===================================
+-- LSP
+-- ===================================
+
+-- LSP
+vim.keymap.set("i", "<C-h>", vim.lsp.omnifunc, { desc = "Trigger completetion Hint" }) -- or `<C-x><C-o>`
+vim.keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol under cursor" })
+vim.keymap.set('i', "<A-s>", vim.lsp.buf.signature_help, { desc = "Signature help" }) -- default <C-s>
+vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+
+-- Formatting
+vim.keymap.set({ "n", "i", "x" }, "<A-F>", vim.lsp.buf.format, { desc = "Format local buffer" })
+
+-- diagnostic
+vim.keymap.set('n', "<leader>df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+
+vim.keymap.set("n", "<leader>td", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
+
+-- default lsp keymaps (check `:help vim.lsp`)
+--
+-- vim.keymap.set('n', "gri", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+-- vim.keymap.set('n', "grt", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
+-- vim.keymap.set('n', "grr", vim.lsp.buf.references, { desc = "Find References" })
+-- vim.keymap.set('n', "grn", vim.lsp.buf.rename, { desc = "Rename" })
+-- vim.keymap.set({ 'n', 'x' }, "gra", vim.lsp.buf.code_action, { desc = "Code Action" })
+-- vim.keymap.set('n', "grx", vim.lsp.codelens.run, { desc = "Run CodeLens" })
+-- vim.keymap.set('n', "gO", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
+-- vim.keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+-- vim.keymap.set('n', "K", vim.lsp.buf.hover, vim.tbl_extend("force", { desc = "Show Documentation" }))
