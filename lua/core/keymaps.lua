@@ -120,19 +120,19 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Exit terminal mode
 vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-
 -- ===================================
 -- LSP
 -- ===================================
 
 -- LSP
-vim.keymap.set("i", "<C-h>", vim.lsp.omnifunc, { desc = "Trigger completetion Hint" }) -- or `<C-x><C-o>`
-vim.keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol under cursor" })
-vim.keymap.set('i', "<A-s>", vim.lsp.buf.signature_help, { desc = "Signature help" }) -- default <C-s>
+vim.keymap.set("i", "<C-h>", vim.lsp.omnifunc, { desc = "Trigger completetion Hint" })            -- or `<C-x><C-o>`
+vim.keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol under cursor" }) -- or `grn`
+vim.keymap.set('i', "<A-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })             -- default <C-s>
 vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 -- Formatting
 vim.keymap.set({ "n", "i", "x" }, "<A-F>", vim.lsp.buf.format, { desc = "Format local buffer" })
+vim.keymap.set({ "n", "i", "x" }, "<leader>f", vim.lsp.buf.format, { desc = "Format local buffer" })
 
 -- diagnostic
 vim.keymap.set('n', "<leader>df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })

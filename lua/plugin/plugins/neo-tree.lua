@@ -18,7 +18,7 @@ vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
--- options
+--- Setup ---
 require("neo-tree").setup({
   window = { width = 35 },
   filesystem = {
@@ -31,5 +31,5 @@ require("neo-tree").setup({
   },
 })
 
--- keymaps
+--- Keymaps ---
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Neotree" })
