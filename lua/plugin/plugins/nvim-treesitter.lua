@@ -22,10 +22,10 @@ local ensure_installed = {
   -- languages
   "rust", "python",
   "html", "css",
-  "bash", "fish", "zsh",
 
   -- extras
   "http",
+  "bash", "fish", "zsh",
 
   -- ignore already installed by native `vim.treesitter`
   -- e.g. markdown, lua, vim... (run `:checkhealth vim.treesitter`)

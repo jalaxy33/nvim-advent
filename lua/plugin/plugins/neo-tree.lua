@@ -5,6 +5,12 @@
 --  New commands:
 --    `:Neotree`
 --
+--  How to show icons:
+--  1. Install `nvim-tree/nvim-web-devicons` plugin.
+--  2. Install `mini.icons` (provided by `mini.nvim`). Then setup:
+--    require('mini.icons').setup({})
+--    require('mini.icons').mock_nvim_web_devicons()
+--
 
 vim.pack.add({
   {
@@ -14,8 +20,6 @@ vim.pack.add({
   -- dependencies
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/MunifTanjim/nui.nvim",
-  -- optional, but recommended
-  "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
 --- Setup ---
