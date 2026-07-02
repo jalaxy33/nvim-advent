@@ -37,5 +37,8 @@ load_plugin(plugindir, "neo-tree") -- tree-style file browser
 -- Git integration
 load_plugin(plugindir, "gitsigns") -- git integration for buffer
 
+-- Toggle terminal
+load_plugin(plugindir, "toggleterm")
+
 -- Misc
 load_plugin(plugindir, "mini") -- collections of plugins
