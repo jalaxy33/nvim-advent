@@ -54,7 +54,10 @@ vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() FFF.live_grep_under_cursor
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'fff_input',
   callback = function(ev)
-    if vim.fn.exists('&autocomplete') ~= 1 then return end -- skip if option is unavailable
+    if not vim.g.native_autocomplete              -- skip if not using native autocomplete
+        or vim.fn.exists('&autocomplete') ~= 1 then -- skip if option is unavailable
+      return
+    end
     local saved = vim.o.autocomplete
     vim.o.autocomplete = false
     vim.api.nvim_create_autocmd('BufWipeout', {

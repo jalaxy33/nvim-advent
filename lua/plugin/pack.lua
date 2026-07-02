@@ -35,4 +35,4 @@ load_plugin(plugindir, "fff") -- file picker & fuzzy finder
 load_plugin(plugindir, "neo-tree") -- tree-style file browser
 
 -- Misc
-load_plugin(plugindir, "mini") -- useful collections for statusline and more
+load_plugin(plugindir, "mini") -- collections of plugins
