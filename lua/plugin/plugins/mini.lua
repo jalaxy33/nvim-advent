@@ -16,6 +16,9 @@ require('mini.statusline').setup({})
 -- autopairs
 require("mini.pairs").setup({})
 
+-- extend a/i behaviors
+require("mini.ai").setup({})
+
 -- icons
 local Icons = require('mini.icons')
 Icons.setup({})
