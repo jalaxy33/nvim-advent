@@ -59,11 +59,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end
 
     -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    if client:supports_method('textDocument/completion') then
+    if vim.g.native_autocomplete -- only set this when using native autocomplete
+        and client:supports_method('textDocument/completion') then
       -- Optional: trigger autocompletion on EVERY keypress. May be slow!
       -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
       -- client.server_capabilities.completionProvider.triggerCharacters = chars
-
+      if vim.fn.exists('&autocomplete') ~= 1 then return end -- skip if option is unavailable
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
 

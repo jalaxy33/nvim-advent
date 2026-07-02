@@ -13,7 +13,15 @@ vim.pack.add({
 -- statusline
 require('mini.statusline').setup({})
 
+-- autopairs
+require("mini.pairs").setup({})
+
 -- icons
-local Icons =  require('mini.icons')
+local Icons = require('mini.icons')
 Icons.setup({})
-Icons.mock_nvim_web_devicons() -- apply to plugins like `neo-tree` 
+Icons.mock_nvim_web_devicons() -- apply to plugins like `neo-tree`
+
+-- completion & signature help
+if not vim.g.native_autocomplete then
+  require("mini.completion").setup({})
+end

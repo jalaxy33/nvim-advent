@@ -3,6 +3,14 @@
 -- Options & Custom Global variables
 --
 
+
+-- ===================================
+-- Custom Global Varables
+-- ===================================
+
+vim.g.format_on_save = false
+vim.g.native_autocomplete = false -- toggle native autocomplete
+
 -- ===================================
 -- Options
 -- ===================================
@@ -10,11 +18,10 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.scrolloff = 8      -- keep % lines above/below cursor
-vim.opt.sidescrolloff = 8  -- keep % lines left/right of cursor
-vim.opt.showmatch = true   -- hightlights matching brackets
-vim.opt.signcolumn = "yes" -- show diagnostic on the left of linenumber
-
+vim.opt.scrolloff = 8                   -- keep % lines above/below cursor
+vim.opt.sidescrolloff = 8               -- keep % lines left/right of cursor
+vim.opt.showmatch = true                -- hightlights matching brackets
+vim.opt.signcolumn = "yes"              -- show diagnostic on the left of linenumber
 
 vim.opt_global.mouse = "a"              -- enable mouse support
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
@@ -60,13 +67,9 @@ vim.opt.maxmempattern = 20000 -- increase max memory
 vim.opt.splitbelow = true     -- :vsplit new window to below
 --vim.opt.splitright = true  -- :split new window to right
 
-vim.opt.autocomplete = true                           -- enable built-in autocomplete (v0.12), press <C-e> to exit.
-vim.opt.complete:append('o')                          -- integrate completion with LSP
-vim.opt.completeopt = "menuone,fuzzy,noselect,nosort" -- completion behaviors
-
-
--- ===================================
--- Custom Global Varables
--- ===================================
-
-vim.g.format_on_save = false
+-- native autocomplete
+if vim.g.native_autocomplete then
+  vim.opt.autocomplete = true                           -- enable built-in autocomplete (v0.12), press <C-e> to exit.
+  vim.opt.complete:append('o')                          -- integrate completion with LSP
+  vim.opt.completeopt = "menuone,fuzzy,noselect,nosort" -- completion behaviors
+end
