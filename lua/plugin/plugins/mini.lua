@@ -7,5 +7,8 @@ vim.pack.add({
   'https://github.com/nvim-mini/mini.nvim'
 })
 
+
+--- Setup ---
+
 -- statusline
 require('mini.statusline').setup({})

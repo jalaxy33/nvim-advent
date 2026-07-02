@@ -34,7 +34,7 @@ local ensure_installed = {
 require("nvim-treesitter").install(ensure_installed)
 
 
---- Auto Commands ---
+--- Autocmds  ---
 
 -- Automatically call `vim.treesitter.start` to enable Treesitter highlights
 vim.api.nvim_create_autocmd("FileType", {

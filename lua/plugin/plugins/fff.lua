@@ -34,10 +34,10 @@ vim.g.fff = {
   debug = { enabled = true, show_scores = true },
 }
 
---- options ---
+--- Setup ---
 require("fff").setup({})
 
---- keymaps ---
+--- Keymaps ---
 local FFF = require("fff")
 
 vim.keymap.set('n', '<leader>ff', function() FFF.find_files() end, { desc = 'FFFind files' })
@@ -48,7 +48,7 @@ vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() FFF.live_grep_under_cursor
   { desc = 'Search current word / selection' })
 
 
---- autocmds ---
+--- Autocmds ---
 
 -- Temporarily disable builtin autocomplete in FFF ui (which is annoying)
 vim.api.nvim_create_autocmd('FileType', {

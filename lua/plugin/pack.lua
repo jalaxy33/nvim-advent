@@ -14,12 +14,12 @@ end
 -- Load Plugins
 -- ===================================
 
-local packroot = "plugins.packplugins"
-local plugindir = packroot .. "." .. "plugins"
+local plugindir = "plugin.plugins"
+local utilsdir = "plugin.utils"
 
---- Customized modules ---
+--- Utils ---
 
-load_plugin(packroot, "pack-helper") -- helpers for `vim.pack` manager
+load_plugin(utilsdir, "pack-helper") -- helpers for `vim.pack` manager
 
 
 --- 3rd-party Plugins ---
@@ -34,5 +34,5 @@ load_plugin(plugindir, "fff") -- file picker & fuzzy finder
 -- File Browser
 load_plugin(plugindir, "neo-tree") -- tree-style file browser
 
--- utils
+-- Misc
 load_plugin(plugindir, "mini") -- useful collections for statusline and more

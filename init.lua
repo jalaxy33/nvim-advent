@@ -26,12 +26,8 @@ require("core.autocmds")
 -- Plugins
 -- ===================================
 
-vim.g.use_lazy = false
-if vim.g.use_lazy then
-  require("plugins.lazy") -- use `lazy.nvim` as package manager
-else
-  require("plugins.pack") -- use `vim.pack` as package manager (v0.12)
-end
+require("plugin.pack")
+
 
 -- enable built-in plugins (v0.12)
 vim.cmd("packadd nvim.undotree") -- `:Undotree`

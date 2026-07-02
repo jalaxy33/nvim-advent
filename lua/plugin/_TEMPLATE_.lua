@@ -4,5 +4,5 @@ vim.pack.add({
   '<REPO_URL>'
 })
 
--- options
+--- Setup ---
 require("<PLUGIN>").setup({})
