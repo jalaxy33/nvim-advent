@@ -24,8 +24,10 @@ local ensure_installed = {
   "html", "css",
 
   -- extras
-  "http",
+  "http", "mermaid",
+  "json", "yaml", "toml",
   "bash", "fish", "zsh",
+  "gitignore", "ssh_config",
 
   -- ignore already installed by native `vim.treesitter`
   -- e.g. markdown, lua, vim... (run `:checkhealth vim.treesitter`)
