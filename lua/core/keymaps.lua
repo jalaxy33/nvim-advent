@@ -72,6 +72,37 @@ vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decreas
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
 
+-- default window keymaps (check :h windows)
+--
+-- all start with `<C-w>`
+--
+-- [1] Create window
+-- vim.keymap.set("n", "<C-w>s", "<cmd>split<cr>", { desc = "Split window Horizontally" })
+-- vim.keymap.set("n", "<C-w>v", "<cmd>vsplit<cr>", { desc = "Split window Vertically" })
+-- vim.keymap.set("n", "<C-w>n", "<cmd>new<cr>", { desc = "Create new window" })
+--
+--   Split window use identifier under cursor:    <C-w>]
+--
+-- [2] Close window
+-- vim.keymap.set("n", "<C-w>q", "<cmd>q<cr>", { desc = "Quit Current window" })
+--
+-- [3] Move cursor to window
+--  Move Left:  <C-w>h or <C-w><left>
+--  Move down:  <C-w>j or <C-w><down>
+--  Move up:    <C-w>k or <C-w><up>
+--  Move right: <C-w>l or <C-w><right>
+--
+-- [4] Move window around
+--  Move downwards/rightwards:  <C-w>r
+--  Move upwards/leftwards:     <C-w>R
+--  Exchange with next:         <C-w>x
+--  Move to a new tabpage:      <C-w>t    -- fails if only one window in current tabpage
+--  Move to very left:      <C-w>h
+--  Move to very bottom:    <C-w>j
+--  Move to very top:       <C-w>k
+--  Move to very right:     <C-w>l
+
+
 -- ===================================
 -- Editting Behaviors
 -- ===================================
@@ -120,6 +151,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Exit terminal mode
 vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+
 -- ===================================
 -- LSP
 -- ===================================
@@ -132,7 +164,6 @@ vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 -- Formatting
 vim.keymap.set({ "n", "i", "x" }, "<A-F>", vim.lsp.buf.format, { desc = "Format local buffer" })
-vim.keymap.set({ "n", "i", "x" }, "<leader>f", vim.lsp.buf.format, { desc = "Format local buffer" })
 
 -- diagnostic
 vim.keymap.set('n', "<leader>df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
