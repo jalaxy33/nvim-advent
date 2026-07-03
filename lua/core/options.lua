@@ -10,6 +10,25 @@
 
 vim.g.format_on_save = false
 vim.g.native_autocomplete = false -- toggle native autocomplete
+vim.g.unix_shell = "fish"         -- shell to use on linux/macos
+vim.g.win_shell = "pwsh"          -- shell to use on windows
+
+-- ===================================
+-- Helper Functions
+-- ===================================
+
+local function is_os_unix()
+  return vim.fn.has("unix") == 1
+end
+
+local function is_os_windows()
+  return vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
+end
+
+local function command_exists(cmd)
+  return cmd ~= nil and vim.fn.executable(cmd) == 1
+end
+
 
 -- ===================================
 -- Options
@@ -67,9 +86,22 @@ vim.opt.maxmempattern = 20000 -- increase max memory
 vim.opt.splitbelow = true     -- :vsplit new window to below
 --vim.opt.splitright = true  -- :split new window to right
 
+
+-- ===================================
+-- Conditional Options
+-- ===================================
+
 -- native autocomplete
 if vim.g.native_autocomplete then
   vim.opt.autocomplete = true                           -- enable built-in autocomplete (v0.12), press <C-e> to exit.
   vim.opt.complete:append('o')                          -- integrate completion with LSP
   vim.opt.completeopt = "menuone,fuzzy,noselect,nosort" -- completion behaviors
+end
+
+
+-- set terminal shell
+if is_os_unix() and command_exists(vim.g.unix_shell) then
+  vim.o.shell = vim.g.unix_shell
+elseif is_os_windows() and command_exists(vim.g.win_shell) then
+  vim.o.shell = vim.g.win_shell
 end

@@ -36,4 +36,4 @@ require("neo-tree").setup({
 })
 
 --- Keymaps ---
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree reveal toggle<cr>", { desc = "Toggle Neotree" })
