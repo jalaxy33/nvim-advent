@@ -34,14 +34,17 @@ load_plugin(plugindir, "fff") -- file picker & fuzzy finder
 -- File Browser
 load_plugin(plugindir, "neo-tree") -- tree-style file browser
 
+-- Toggle terminal
+load_plugin(plugindir, "toggleterm")
+
 -- bufferline
 load_plugin(plugindir, "bufferline")
 
 -- Git integration
 load_plugin(plugindir, "gitsigns") -- git integration for buffer
 
--- Toggle terminal
-load_plugin(plugindir, "toggleterm")
-
 -- Misc
-load_plugin(plugindir, "mini") -- collections of plugins
+load_plugin(plugindir, "mini")      -- collections of plugins
+
+-- Unnecessary
+load_plugin(plugindir, "which-key") -- keymap indication
