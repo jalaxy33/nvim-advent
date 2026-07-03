@@ -34,6 +34,9 @@ load_plugin(plugindir, "fff") -- file picker & fuzzy finder
 -- File Browser
 load_plugin(plugindir, "neo-tree") -- tree-style file browser
 
+-- bufferline
+load_plugin(plugindir, "bufferline")
+
 -- Git integration
 load_plugin(plugindir, "gitsigns") -- git integration for buffer
 

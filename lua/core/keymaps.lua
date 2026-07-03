@@ -42,17 +42,20 @@ end, { desc = "Toggle Builtin Undotree" })
 -- Window, Buffer & Tab
 -- ===================================
 
-
 -- buffers
-vim.keymap.set("n", "<leader>{", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<leader>}", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set('n', "bn", "<cmd>enew<cr>", { desc = "New Buffer" })
+vim.keymap.set('n', "bx", "<cmd>bdelete<cr>", { desc = "Close Buffer" })
+vim.keymap.set("n", "b[", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
+vim.keymap.set("n", "b]", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "bs", "<cmd>buffers<cr>", { desc = "Show all buffers" })
 
 -- tabs
-vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
-vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Current tab" })
-vim.keymap.set("n", "<leader><tab>o", "<cmd>tabclose<cr>", { desc = "Close Other tabs" })
-vim.keymap.set("n", "<leader><tab>h", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
-vim.keymap.set("n", "<leader><tab>l", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "tn", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "tx", "<cmd>tabclose<cr>", { desc = "Close Current tab" })
+vim.keymap.set("n", "to", "<cmd>tabonly<cr>", { desc = "Close Other tabs" })
+vim.keymap.set("n", "t[", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "t]", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "ts", "<cmd>tabs<cr>", { desc = "Show All Tabs" })
 
 -- split/close window
 vim.keymap.set("n", "<leader>sv", ":vsplit<cr>", { desc = "Split window Vertically" })  -- or `<C-w>v`
