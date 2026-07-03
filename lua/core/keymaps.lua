@@ -143,7 +143,7 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor center" })
 
 -- Quick replacement
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace word under cursor" })
 
 
