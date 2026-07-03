@@ -57,7 +57,7 @@ vim.opt.ignorecase = true     -- case insensitive search
 vim.opt.smartcase = true      -- case sensitive if uppercase in string
 vim.opt.hlsearch = true       -- highlight search matches
 vim.opt.incsearch = true      -- show matches as you type
-vim.opt.isfname:append("@-@") -- allows @ in filename
+-- vim.opt.isfname:append("@-@") -- allows - in filename
 
 vim.opt.pumheight = 8         -- popup menu height
 vim.opt.pumblend = 10         -- popup menu transparent
