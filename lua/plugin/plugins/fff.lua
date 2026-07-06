@@ -14,6 +14,8 @@
 --
 --  :lua require('fff.download').download_or_build_binary()
 --
+-- Add results to Quickfix: search something and press `<C-q>`
+--
 
 vim.pack.add({
   'https://github.com/dmtrKovalenko/fff.nvim'
@@ -34,18 +36,25 @@ vim.g.fff = {
   debug = { enabled = true, show_scores = true },
 }
 
+
 --- Setup ---
 require("fff").setup({})
 
+
 --- Keymaps ---
 local FFF = require("fff")
+local help_dir = vim.fs.joinpath(os.getenv('VIMRUNTIME'), "doc")
 
 vim.keymap.set('n', '<leader>ff', function() FFF.find_files() end, { desc = 'FFFind files' })
 vim.keymap.set('n', '<leader>fg', function() FFF.live_grep() end, { desc = 'LiFFFe Grep' })
-vim.keymap.set('n', '<leader>fz',
-  function() FFF.live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end, { desc = 'Live fffuzy Grep' })
+vim.keymap.set('n', '<leader>fz', function() FFF.live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end,
+  { desc = 'Live fffuzy Grep' })
 vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() FFF.live_grep_under_cursor() end,
   { desc = 'Search current word / selection' })
+
+vim.keymap.set('n', '<leader>fhf', function() FFF.find_files_in_dir(help_dir) end, { desc = "Find Help Files" })
+vim.keymap.set('n', '<leader>fhg', function() FFF.live_grep({ cwd = help_dir, title = "Grep Helps", }) end,
+  { desc = 'Grep Helps' })
 
 
 --- Autocmds ---
@@ -54,7 +63,7 @@ vim.keymap.set({ 'n', 'x' }, '<leader>fw', function() FFF.live_grep_under_cursor
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'fff_input',
   callback = function(ev)
-    if not vim.g.native_autocomplete              -- skip if not using native autocomplete
+    if not vim.g.native_autocomplete                -- skip if not using native autocomplete
         or vim.fn.exists('&autocomplete') ~= 1 then -- skip if option is unavailable
       return
     end
