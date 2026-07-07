@@ -11,5 +11,6 @@ require("which-key").setup({
     { "<auto>", mode = "nixsotc" },
     { "t",      mode = { "n" } },
     { "b",      mode = { "n" } },
+    { "s",      mode = { "n", "x" } },
   }
 })

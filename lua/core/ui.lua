@@ -5,7 +5,7 @@
 
 -- color theme
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin")  -- built-in color theme
 
 -- enable experimental `ui2` (v0.12)
 --  hit `g<` to jump into message buffer

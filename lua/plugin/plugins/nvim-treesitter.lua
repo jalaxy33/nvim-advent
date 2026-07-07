@@ -34,30 +34,3 @@ local ensure_installed = {
 }
 
 require("nvim-treesitter").install(ensure_installed)
-
-
---- Autocmds  ---
-
--- Automatically call `vim.treesitter.start` to enable Treesitter highlights
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",         -- for all filetypes
-  callback = function(args)
-    local buf = args.buf -- buffer_number of file
-    local ft = vim.bo[buf].filetype
-
-    local lang = vim.treesitter.language.get_lang(ft) -- get language name
-    -- if no matching filetype, falls back to vim regex highlights
-    if not lang then
-      return
-    end
-
-    local ok_add = pcall(vim.treesitter.language.add, lang) -- try to load the parser
-    -- if failed, falls back
-    if not ok_add then
-      return
-    end
-
-    -- starts treesitter highlights on the buffer
-    pcall(vim.treesitter.start, buf, lang)
-  end
-})
