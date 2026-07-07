@@ -42,7 +42,7 @@ vim.opt.sidescrolloff = 8               -- keep % lines left/right of cursor
 vim.opt.showmatch = true                -- hightlights matching brackets
 vim.opt.signcolumn = "yes"              -- show diagnostic on the left of linenumber
 
-vim.opt_global.mouse = "a"              -- enable mouse support
+vim.opt.mouse = "a"              -- enable mouse support
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 
 vim.opt.tabstop = 2                     -- tabwidth

@@ -41,4 +41,4 @@ vim.diagnostic.config({
 -- Enable LSP servers
 -- ===================================
 
-require("lsp.lua") -- [lua] by `lua-language-server`
+require("lsp.lua_ls") -- [lua] by `lua-language-server`
