@@ -169,11 +169,12 @@ vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set({ "n", "i", "x" }, "<A-F>", vim.lsp.buf.format, { desc = "Format local buffer" })
 
 -- diagnostic
-vim.keymap.set('n', "<leader>df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+local Diagnostic = vim.diagnostic
 
-vim.keymap.set("n", "<leader>td", function()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = "Toggle diagnostics" })
+vim.keymap.set('n', "<leader>df", Diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "<leader>dt", function() Diagnostic.enable(not Diagnostic.is_enabled()) end,
+  { desc = "Toggle diagnostics" })
+
 
 -- default lsp keymaps (check `:help vim.lsp`)
 --

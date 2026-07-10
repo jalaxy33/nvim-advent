@@ -66,7 +66,7 @@ vim.opt.winblend = 5          -- floating window transparency
 vim.opt.synmaxcol = 400       -- syntax highlightlighting limit
 vim.opt.laststatus = 3        -- allow full statusline
 
-vim.opt.cmdheight = 0         -- command line height. 0 means only show command line when necessary
+vim.opt.cmdheight = 1         -- command line height. 0 means only show command line when necessary
 vim.opt.shortmess:append("c") -- keep command line clean by hiding completion messages
 
 vim.opt.backup = false        -- do not create a backup file

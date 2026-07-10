@@ -70,6 +70,7 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 
 ## Inspirations
 
-- TJ DeVries - [Advent of Neovim](https://www.youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM)
-- The Rad Lectures - [Minimal & Powerful: The Perfect NeoVim Setup for 2026](https://www.youtube.com/watch?v=lljs_7xB7Ps)
-- LazyVim [keymaps.lua](https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua)
+- TJ DeVries - [Advent of Neovim](https://youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM&si=mRYcshdbfi_J0FKo) series
+- [LazyVim](https://www.lazyvim.org/) & its [keymaps](https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua)
+- The Rad Lectures - [Minimal & Powerful: The Perfect NeoVim Setup for 2026](https://youtu.be/lljs_7xB7Ps?si=MeIEpPWaoQ9-5v-_)
+- Seth Phaeno [How To Setup Minimal Neovim 0.12 Config Guide From Scratch](https://youtu.be/XQuNoprFW38?si=raqtvRT-bwlyLqz2)
