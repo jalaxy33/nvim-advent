@@ -19,6 +19,11 @@ require("mini.pairs").setup({})
 -- extend a/i behaviors
 require("mini.ai").setup({})
 
+-- command line completion
+require("mini.cmdline").setup({
+  autocorrect = { enable = false },
+})
+
 -- surround actions (starts with s)
 --  add surround: `sa`
 --  delete surround: `sd`

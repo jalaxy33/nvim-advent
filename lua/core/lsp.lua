@@ -23,10 +23,27 @@
 
 
 -- ===================================
+-- Helper Functions
+-- ===================================
+
+local function enable_lsp(lsproot, name)
+  require(lsproot .. "." .. name)
+end
+
+
+-- ===================================
 -- Global LSP Settings
 -- ===================================
 
+-- set completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local MiniCompletion = require("mini.completion")
+if MiniCompletion ~= nil then
+  -- if `mini.completion` used, merge its capabilities together
+  capabilities = vim.tbl_deep_extend("force", capabilities, MiniCompletion.get_lsp_capabilities())
+end
+
 vim.lsp.config('*', { capabilities = capabilities })
 
 --- diagnostic configs
@@ -40,5 +57,6 @@ vim.diagnostic.config({
 -- ===================================
 -- Enable LSP servers
 -- ===================================
+local lsproot = "lsp"
 
-require("lsp.lua_ls") -- [lua] by `lua-language-server`
+enable_lsp(lsproot, "lua") -- [lua]
