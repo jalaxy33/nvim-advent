@@ -69,70 +69,10 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
   ```
 
 
-## Configure LSP & Formatters
+## Documentations
 
-### Configuring LSP
+- [Configure LSP & formatters](tutors/docs/lsp_and_formatter.md)
 
-```
-Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
-```
-
-Example — config LSP for lua:
-
-1. Install the language server: `:MasonInstall lua-language-server`
-2. _(Optional)_ Auto-install on new machines: edit `lua/plugin/plugins/mason.lua`:
-  ```lua
-  require("mason-tool-installer").setup({
-    ensure_installed = {
-      -- ...existing...
-      'lua-language-server',
-    }
-  })
-  ```
-3. Create `lua/lsp/lua.lua`:
-   ```lua
-   vim.lsp.config('lua_ls', {
-     settings = {
-       Lua = { diagnostics = { globals = { 'vim' } } },
-     },
-   })
-   vim.lsp.enable('lua_ls')
-   ```
-4. Register in `lua/core/lsp.lua`:
-   ```lua
-   enable_lsp(lsproot, "lua")
-   ```
-
-### Configuring Formatters
-
-```
-Find formatters → lua/plugin/plugins/conform.lua
-```
-
-Example — add shell script formatting with shfmt:
-
-1. Find the formatter name: `:h conform-formatters`
-2. Add to `lua/plugin/plugins/conform.lua`:
-   ```lua
-    require("conform").setup({
-      formatters_by_ft = {
-        -- ...existing...
-        sh = { "shfmt" },
-        zsh = { "shfmt" },
-      },
-    })
-   ```
-3. _(Optional)_ Set indent to 2 spaces:
-   ```lua
-    require("conform").setup({
-      -- ...other settings...
-      formatters = {
-        shfmt = {
-          append_args = { "-i", "2" },
-        },
-      }
-    })
-   ```
 
 ## Inspirations
 
