@@ -59,4 +59,4 @@ vim.diagnostic.config({
 -- ===================================
 local lsproot = "lsp"
 
-enable_lsp(lsproot, "lua") -- [lua]
+enable_lsp(lsproot, "lua")  -- [lua]

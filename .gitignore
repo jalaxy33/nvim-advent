@@ -1,5 +1,6 @@
 /.pi
 /.claude
+/.codegraph
 
 nvim-pack-lock.json
 lazy-lock.json
