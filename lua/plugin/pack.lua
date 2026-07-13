@@ -48,3 +48,4 @@ load_plugin(plugindir, "live-preview") -- preview Markdown/HTML in browser
 load_plugin(plugindir, "nvim-treesitter") -- treesitter configs for more languages
 load_plugin(plugindir, "nvim-lspconfig")  -- quickstart LSP configs
 load_plugin(plugindir, "mason")           -- LSP installation
+load_plugin(plugindir, "conform")         -- set formatters
