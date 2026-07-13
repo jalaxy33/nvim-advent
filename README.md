@@ -68,11 +68,9 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
   nvim
   ```
 
-
 ## Documentations
 
 - [Configure LSP & formatters](tutors/docs/lsp_and_formatter.md)
-
 
 ## Inspirations
 
