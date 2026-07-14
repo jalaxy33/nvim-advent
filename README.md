@@ -5,7 +5,6 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 ## Requirements
 
 - [Neovim](https://neovim.io/) 0.12 or newer
-- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later, installed via your package manager, **not npm**)
 - a [Nerd Font](https://www.nerdfonts.com/) (Optional)
 
 ## How to use
