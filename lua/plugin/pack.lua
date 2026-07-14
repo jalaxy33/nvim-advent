@@ -41,7 +41,6 @@ load_plugin(plugindir, "gitsigns") -- git integration for buffer
 
 -- Misc
 load_plugin(plugindir, "mini")         -- collections of plugins
-load_plugin(plugindir, "which-key")    -- keymap indication
 load_plugin(plugindir, "live-preview") -- preview Markdown/HTML in browser
 
 -- LSP
