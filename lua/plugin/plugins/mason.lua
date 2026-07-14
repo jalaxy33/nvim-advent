@@ -15,15 +15,27 @@ vim.pack.add({
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'
 })
 
+
+--- set auto-installed LSP ---
+local ensure_installed = {
+  'lua-language-server',
+  'efm',
+  'prettierd',
+}
+
+if vim.fn.has('unix') then -- only used in Linux/MacOS
+  ensure_installed = vim.list_extend(ensure_installed, {
+    'shfmt',
+  })
+end
+
+
 --- Setup ---
 require("mason").setup({})
 require("mason-tool-installer").setup({
-  ensure_installed = {
-    'lua-language-server',
-    'prettierd',
-    'shfmt'
-  }
+  ensure_installed = ensure_installed,
 })
+
 
 -- Keymaps --
 vim.keymap.set('n', "<leader>ms", "<cmd>Mason<CR>", { desc = "Open Mason LSP Installer" })

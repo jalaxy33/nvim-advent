@@ -1,4 +1,4 @@
--- lsp config for `lua` (.lua)
+-- config for `lua` (.lua)
 --
 -- LSP provided by [lua-language-server](https://github.com/LuaLS/lua-language-server).
 -- Install it globally, or install by mason `:MasonInstall lua`

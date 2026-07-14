@@ -166,7 +166,12 @@ vim.keymap.set('i', "<A-s>", vim.lsp.buf.signature_help, { desc = "Signature hel
 vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 -- Formatting
-vim.keymap.set({ "n", "i", "x" }, "<A-F>", vim.lsp.buf.format, { desc = "Format buffer" }) -- keymap fallback
+vim.keymap.set({ "n", "i", "x" }, "<A-F>", function()
+  vim.lsp.buf.format({ async = true })
+  -- notify formatting message
+  local filepath = vim.fn.expand("%")
+  vim.notify(filepath .. " formatted (or failed).")
+end, { desc = "Format buffer" })
 
 -- diagnostic
 local Diagnostic = vim.diagnostic
