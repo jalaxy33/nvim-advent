@@ -35,17 +35,6 @@ end
 -- Global LSP Settings
 -- ===================================
 
--- set completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local MiniCompletion = require("mini.completion")
-if MiniCompletion ~= nil then
-  -- if `mini.completion` used, merge its capabilities together
-  capabilities = vim.tbl_deep_extend("force", capabilities, MiniCompletion.get_lsp_capabilities())
-end
-
-vim.lsp.config('*', { capabilities = capabilities })
-
 --- diagnostic configs
 vim.diagnostic.config({
   virtual_text = true,      -- inline diagnostic
@@ -66,3 +55,6 @@ enable_lsp(lsproot, "rust")   -- [rust]
 
 -- enable efm to support formatters & linters
 enable_lsp(lsproot, "efm")
+
+-- buffer/path/snippets completion
+enable_lsp(lsproot, "basics")
