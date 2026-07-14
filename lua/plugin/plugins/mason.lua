@@ -31,7 +31,7 @@ local ensure_installed = {
   'prettierd',
 }
 
-if vim.fn.has('unix') then -- only used in Linux/MacOS
+if vim.fn.has('unix') then -- only auto-install in Linux/MacOS
   ensure_installed = vim.list_extend(ensure_installed, {
     'shfmt',
   })
