@@ -21,6 +21,7 @@ local ensure_installed = {
   'lua-language-server',
   'efm',
   'prettierd',
+  'basics-language-server',
 }
 
 if vim.fn.has('unix') then -- only used in Linux/MacOS

@@ -48,41 +48,85 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
 
 ## Configuring Formatters
 
+Formatters and linters are managed through [efm-langserver](https://github.com/mattn/efm-langserver), a general-purpose LSP that wraps external tools. The [efmls-configs-nvim](https://github.com/creativenull/efmls-configs-nvim) plugin provides pre-configured formatter/linter recipes.
+
 Procedure:
 
 ```
-Find formatters → lua/plugin/plugins/conform.lua
+Find formatter → lua/lsp/efm.lua
 ```
 
-**Example** — add shell script formatters:
+### Built-in formatter recipes (efmls-configs)
 
-1. Find the formatter name by `:h conform-formatters` or check docs of [conform](https://github.com/stevearc/conform.nvim#formatters)
+1. Find supported formatters at `:h efmls-configs-setup` or the [supported list](https://github.com/creativenull/efmls-configs-nvim/blob/main/doc/SUPPORTED_LIST.md).
 
-2. Add to `lua/plugin/plugins/conform.lua`:
+2. Install the formatter globally or by mason: `:MasonInstall prettierd`.
 
+   For auto-install on new machines, add to `lua/plugin/plugins/mason.lua`:
    ```lua
-   require("conform").setup({
-     formatters_by_ft = {
-       -- ...existing...
-       sh = { "shfmt" },
-       zsh = { "shfmt" },
-       fish = { "fish_indent" },
-     },
-   })
+   ensure_installed = { ..., 'prettierd' }
    ```
 
-3. _(Optional)_ tweak formatter settings:
+3. Register in `lua/lsp/efm.lua`:
 
    ```lua
-   require("conform").setup({
-     -- ...other settings...
-     formatters = {
-       -- set bash/zsh indent to % spaces
-       shfmt = {
-         append_args = { "-i", "2" },
-       },
-     }
-   })
+   local function get_formatter(name)
+     require("efmls-configs.formatters." .. name)
+   end
+
+   local prettierd = get_formatter("prettier_d")
+   local ruff = get_formatter("ruff")
+
+   local languages = {
+     javascript = { prettierd },
+     typescript = { prettierd },
+     json = { prettierd },
+     markdown = { prettierd },
+     python = { ruff },
+   }
    ```
 
-   You could also tweak options for each filetype by writing filetype-specific config file under `after/ftplugin/` (e.g. `sh.lua`, `markdown.lua`).
+### Custom formatter recipes
+
+Define the command directly (instead of using `get_formatter()`) when:
+
+- the tool is not in efmls-configs' supported list, or
+- you need to customize the default configuration (e.g. indent width, extra flags):
+
+```lua
+local shfmt = {
+  formatCommand = "shfmt -ci -s -bn -i 2",
+  formatStdin = true,
+}
+
+local languages = {
+  sh = { shfmt },
+  zsh = { shfmt },
+}
+```
+
+### Add linters
+
+Linters work the same way via `require("efmls-configs.linters." .. name)`:
+
+```lua
+local function get_linter(name)
+  require("efmls-configs.linters." .. name)
+end
+
+local languages = {
+  python = { ruff, get_linter("mypy") },
+}
+```
+
+### Global keymap for formatting
+
+Already configured in `lua/core/keymaps.lua`:
+
+```lua
+vim.keymap.set({ "n", "i", "x" }, "<A-F>", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format buffer" })
+```
+
+Since efm is an LSP server, `vim.lsp.buf.format()` triggers it just like any language server.

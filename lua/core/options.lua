@@ -9,7 +9,7 @@
 -- ===================================
 
 vim.g.format_on_save = false
-vim.g.native_autocomplete = false -- toggle native autocomplete
+vim.g.native_autocomplete = false -- use native autocomplete or not
 vim.g.unix_shell = "fish"         -- shell to use on linux/macos
 vim.g.win_shell = "pwsh"          -- shell to use on windows
 
@@ -42,7 +42,7 @@ vim.opt.sidescrolloff = 8               -- keep % lines left/right of cursor
 vim.opt.showmatch = true                -- hightlights matching brackets
 vim.opt.signcolumn = "yes"              -- show diagnostic on the left of linenumber
 
-vim.opt.mouse = "a"              -- enable mouse support
+vim.opt.mouse = "a"                     -- enable mouse support
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 
 vim.opt.tabstop = 2                     -- tabwidth
@@ -95,7 +95,7 @@ vim.opt.splitbelow = true     -- :vsplit new window to below
 if vim.g.native_autocomplete then
   vim.opt.autocomplete = true                           -- enable built-in autocomplete (v0.12), press <C-e> to exit.
   vim.opt.complete:append('o')                          -- integrate completion with LSP
-  vim.opt.completeopt = "menuone,fuzzy,noselect,nosort" -- completion behaviors
+  vim.opt.completeopt = "menuone,fuzzy,noselect" -- completion behaviors
 end
 
 
