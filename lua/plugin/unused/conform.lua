@@ -43,7 +43,7 @@ vim.keymap.set({ 'n', 'x', 'i' }, "<A-F>", function()
   if #Conform.list_formatters(0) > 0 then
     Conform.format({ async = true })
   else
-    vim.lsp.buf.format()
+    vim.lsp.buf.format({ async = true })
   end
 
   -- notify formatting message

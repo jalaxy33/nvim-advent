@@ -70,7 +70,7 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 
 ## Documentations
 
-- [Configure LSP & formatters](tutors/docs/lsp_and_formatter.md)
+- [Configure LSP & formatters](docs/guides/lsp_and_formatter.md)
 
 ## Inspirations
 
