@@ -56,19 +56,13 @@ local languages = {
   markdown = { prettierd },
   javascript = { prettierd },
   typescript = { prettierd },
+  -- shell
+  sh = { shfmt },
+  zsh = { shfmt },
+  fish = { fish_indent },
   -- languages
   python = { ruff },
 }
-
-if vim.fn.has('unix') then  -- only used in Linux/MacOS
-  languages = vim.tbl_extend('force', languages, {
-    -- shell
-    sh = { shfmt },
-    zsh = { shfmt },
-    fish = { fish_indent },
-  })
-end
-
 
 -- setup efm
 vim.lsp.config("efm", {
