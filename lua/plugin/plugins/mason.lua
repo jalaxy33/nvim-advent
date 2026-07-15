@@ -18,8 +18,12 @@
 
 vim.pack.add({
   'https://github.com/mason-org/mason.nvim',
-  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'
+  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
 })
+
+if vim.g.mason_lsp_autoenable then
+  vim.pack.add({ 'https://github.com/mason-org/mason-lspconfig.nvim' })
+end
 
 
 --- set auto-installed LSP ---
@@ -44,6 +48,14 @@ require("mason-tool-installer").setup({
   ensure_installed = ensure_installed,
 })
 
+if vim.g.mason_lsp_autoenable then
+  require("mason-lspconfig").setup({
+    -- automatically set `vim.lsp.enable()`
+    automatic_enable = true,
+  })
+end
+
 
 -- Keymaps --
 vim.keymap.set('n', "<leader>ms", "<cmd>Mason<CR>", { desc = "Open Mason LSP Installer" })
+vim.keymap.set('n', "<leader>mu", "<cmd>MasonUpdate<CR>", { desc = "Update all Mason-managed LSP" })
