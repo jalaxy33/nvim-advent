@@ -48,9 +48,10 @@ vim.diagnostic.config({
 -- ===================================
 local lsproot = "lsp"
 
-enable_lsp(lsproot, "lua")    -- [lua]
-enable_lsp(lsproot, "python") -- [python]
-enable_lsp(lsproot, "rust")   -- [rust]
+enable_lsp(lsproot, "lua")      -- [lua]
+enable_lsp(lsproot, "python")   -- [python]
+enable_lsp(lsproot, "rust")     -- [rust]
+enable_lsp(lsproot, "markdown") -- [markdown]
 
 
 -- enable efm to support formatters & linters
