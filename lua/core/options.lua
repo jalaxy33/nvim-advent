@@ -87,6 +87,12 @@ vim.opt.maxmempattern = 20000 -- increase max memory
 vim.opt.splitbelow = true     -- :vsplit new window to below
 --vim.opt.splitright = true  -- :split new window to right
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99   -- default foldlevel (99 - unfold all)
+vim.opt.foldlevelstart = 99
+vim.opt.foldcolumn = "0" -- disable extra fold-column
+
 
 -- ===================================
 -- Conditional Options

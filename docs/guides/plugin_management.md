@@ -36,7 +36,7 @@ vim.keymap.set('n', "<leader>xx", "<cmd>MyCommand<CR>", { desc = "Description" }
 In `lua/plugin/pack.lua`, add a line in the plugins section:
 
 ```lua
-load_plugin(plugindir, "my-plugin")
+load_plugin("my-plugin")
 ```
 
 ### Step 3: Restart Neovim

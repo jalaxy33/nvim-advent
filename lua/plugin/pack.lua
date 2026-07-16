@@ -1,50 +1,53 @@
 -- use `vim.pack` as package manager
 
+local plugindir = "plugin.plugins"
+local utilsdir = "plugin.utils"
 
 -- ===================================
 -- Helper Functions
 -- ===================================
 
-local function load_plugin(pluginroot, name)
-  require(pluginroot .. "." .. name)
+local function load_plugin(name)
+  require(plugindir .. "." .. name)
 end
+
+local function load_util(name)
+  require(utilsdir .. "." .. name)
+end
+
+
+-- ===================================
+-- Load Utils
+-- ===================================
+
+load_util("pack-helper") -- helpers for `vim.pack` manager
 
 
 -- ===================================
 -- Load Plugins
 -- ===================================
 
-local plugindir = "plugin.plugins"
-local utilsdir = "plugin.utils"
-
---- Utils ---
-
-load_plugin(utilsdir, "pack-helper") -- helpers for `vim.pack` manager
-
-
---- 3rd-party Plugins ---
-
 -- File picker
-load_plugin(plugindir, "fzf-lua") -- file picker & fuzzy finder
+load_plugin("fzf-lua") -- file picker & fuzzy finder
 
 -- File Browser
-load_plugin(plugindir, "neo-tree") -- tree-style file browser
+load_plugin("neo-tree") -- tree-style file browser
 
 -- Toggle terminal
-load_plugin(plugindir, "toggleterm")
+load_plugin("toggleterm")
 
 -- bufferline
-load_plugin(plugindir, "bufferline")
+load_plugin("bufferline")
 
 -- Git integration
-load_plugin(plugindir, "gitsigns") -- git integration for buffer
+load_plugin("gitsigns") -- git integration for buffer
 
 -- Misc
-load_plugin(plugindir, "mini")         -- collections of plugins
-load_plugin(plugindir, "live-preview") -- preview Markdown/HTML in browser
+load_plugin("mini")         -- collections of plugins
+load_plugin("live-preview") -- preview Markdown/HTML in browser
 
 -- LSP
-load_plugin(plugindir, "nvim-treesitter")    -- treesitter configs for more languages
-load_plugin(plugindir, "nvim-lspconfig")     -- quickstart LSP configs
-load_plugin(plugindir, "mason")              -- LSP installation
-load_plugin(plugindir, "efmls-configs-nvim") -- formatters & linters for efm
+load_plugin("nvim-treesitter")    -- treesitter configs for more languages
+load_plugin("nvim-lspconfig")     -- quickstart LSP configs
+load_plugin("mason")              -- LSP installation
+load_plugin("efmls-configs-nvim") -- formatters & linters for efm
