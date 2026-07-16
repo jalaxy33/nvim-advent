@@ -42,6 +42,36 @@ end, { desc = "Toggle Builtin Undotree" })
 -- Window, Buffer & Tab
 -- ===================================
 
+-- Window-related keymaps starts with `<C-w>`
+--
+-- # Important Defaults
+--
+-- [1] Create window
+-- vim.keymap.set("n", "<C-w>s", "<cmd>split<cr>", { desc = "Split window Horizontally" })
+-- vim.keymap.set("n", "<C-w>v", "<cmd>vsplit<cr>", { desc = "Split window Vertically" })
+-- vim.keymap.set("n", "<C-w>n", "<cmd>new<cr>", { desc = "Create new window" })
+--
+--   Split window use identifier under cursor:    <C-w>]
+--
+-- [2] Close window
+-- vim.keymap.set("n", "<C-w>q", "<cmd>q<cr>", { desc = "Quit Current window" })
+--
+-- [3] Move cursor to window
+--  Move Left:  <C-w>h or <C-w><left>
+--  Move down:  <C-w>j or <C-w><down>
+--  Move up:    <C-w>k or <C-w><up>
+--  Move right: <C-w>l or <C-w><right>
+--
+-- [4] Move window around
+--  Move downwards/rightwards:  <C-w>r
+--  Move upwards/leftwards:     <C-w>R
+--  Exchange with next:         <C-w>x
+--  Move to a new tabpage:      <C-w>t    -- fails if only one window in current tabpage
+--  Move to very left:      <C-w>h
+--  Move to very bottom:    <C-w>j
+--  Move to very top:       <C-w>k
+--  Move to very right:     <C-w>l
+
 -- buffers
 vim.keymap.set('n', "bn", "<cmd>enew<cr>", { desc = "New Buffer" })
 vim.keymap.set('n', "bx", "<cmd>bdelete<cr>", { desc = "Close Buffer" })
@@ -74,36 +104,6 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window 
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
-
--- default window keymaps (check :h windows)
---
--- all start with `<C-w>`
---
--- [1] Create window
--- vim.keymap.set("n", "<C-w>s", "<cmd>split<cr>", { desc = "Split window Horizontally" })
--- vim.keymap.set("n", "<C-w>v", "<cmd>vsplit<cr>", { desc = "Split window Vertically" })
--- vim.keymap.set("n", "<C-w>n", "<cmd>new<cr>", { desc = "Create new window" })
---
---   Split window use identifier under cursor:    <C-w>]
---
--- [2] Close window
--- vim.keymap.set("n", "<C-w>q", "<cmd>q<cr>", { desc = "Quit Current window" })
---
--- [3] Move cursor to window
---  Move Left:  <C-w>h or <C-w><left>
---  Move down:  <C-w>j or <C-w><down>
---  Move up:    <C-w>k or <C-w><up>
---  Move right: <C-w>l or <C-w><right>
---
--- [4] Move window around
---  Move downwards/rightwards:  <C-w>r
---  Move upwards/leftwards:     <C-w>R
---  Exchange with next:         <C-w>x
---  Move to a new tabpage:      <C-w>t    -- fails if only one window in current tabpage
---  Move to very left:      <C-w>h
---  Move to very bottom:    <C-w>j
---  Move to very top:       <C-w>k
---  Move to very right:     <C-w>l
 
 
 -- ===================================
@@ -147,6 +147,7 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
   { desc = "Replace word under cursor" })
 
 
+
 -- ===================================
 -- terminal mode
 -- ===================================
@@ -155,9 +156,25 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set('t', "<esc><esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 
+
 -- ===================================
 -- LSP
 -- ===================================
+
+-- LSP-related keymaps starts with 'g'
+--
+-- ## Important default (check `:h vim.lsp`)
+--
+-- vim.keymap.set('n', "gri", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+-- vim.keymap.set('n', "grt", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
+-- vim.keymap.set('n', "grr", vim.lsp.buf.references, { desc = "Find References" })
+-- vim.keymap.set('n', "grn", vim.lsp.buf.rename, { desc = "Rename" })
+-- vim.keymap.set({ 'n', 'x' }, "gra", vim.lsp.buf.code_action, { desc = "Code Action" })
+-- vim.keymap.set('n', "grx", vim.lsp.codelens.run, { desc = "Run CodeLens" })
+-- vim.keymap.set('n', "gO", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
+-- vim.keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+-- vim.keymap.set('n', "K", vim.lsp.buf.hover, vim.tbl_extend("force", { desc = "Show Documentation" }))
+
 
 -- LSP
 vim.keymap.set("i", "<C-h>", vim.lsp.omnifunc, { desc = "Trigger completetion Hint" })            -- or `<C-x><C-o>`
@@ -181,14 +198,53 @@ vim.keymap.set("n", "<leader>dt", function() Diagnostic.enable(not Diagnostic.is
   { desc = "Toggle diagnostics" })
 
 
--- default lsp keymaps (check `:help vim.lsp`)
+
+-- ===================================
+-- Folding
+-- ===================================
+
+-- Folding keymaps starts with 'z'
 --
--- vim.keymap.set('n', "gri", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
--- vim.keymap.set('n', "grt", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
--- vim.keymap.set('n', "grr", vim.lsp.buf.references, { desc = "Find References" })
--- vim.keymap.set('n', "grn", vim.lsp.buf.rename, { desc = "Rename" })
--- vim.keymap.set({ 'n', 'x' }, "gra", vim.lsp.buf.code_action, { desc = "Code Action" })
--- vim.keymap.set('n', "grx", vim.lsp.codelens.run, { desc = "Run CodeLens" })
--- vim.keymap.set('n', "gO", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
--- vim.keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })
--- vim.keymap.set('n', "K", vim.lsp.buf.hover, vim.tbl_extend("force", { desc = "Show Documentation" }))
+-- ## Important default:
+--
+-- reference:
+--    https://gist.github.com/lestoni/8c74da455cce3d36eb68
+--    https://vimhelp.org/fold.txt.html
+--
+-- cursor-related:
+--  `za` - toggles the fold at the cursor   [**]
+--
+--  `zo` - open a fold at the cursor
+--  `zO` - open all folds at the cursor
+--
+--  `zc` - close a fold at the cursor
+--  `zC` - close all fold at the cursor
+--
+-- Global actions
+--  `zR` - open all folds                   [**]
+--  `zr` - decrease one fold level
+--
+--  `zM` - close all open folds             [**]
+--  `zm` - increase one fold level
+--
+-- Moving
+--  `zj` - move to next fold
+--  `zk` - move to previous fold
+--
+--  `[z` - move to start of current open fold
+--  `]z` - move to end of current open fold
+--
+
+vim.keymap.set({ "n", "x" }, "<leader>zz", "za", { desc = "Toggle fold at the cursor" })
+
+vim.keymap.set({ "n", "x" }, "<leader>zo", "zo", { desc = "Open one fold at the cursor" })
+vim.keymap.set({ "n", "x" }, "<leader>zO", "zR", { desc = "Open all folds." })
+
+vim.keymap.set({ "n", "x" }, "<leader>zc", "zc", { desc = "close one fold at the cursor" })
+vim.keymap.set({ "n", "x" }, "<leader>zC", "zM", { desc = "close all folds." })
+
+vim.keymap.set({ "n", "x" }, "zl", "zj", { desc = "move to next fold" })
+vim.keymap.set({ "n", "x" }, "zh", "zk", { desc = "move to previous fold" })
+
+vim.keymap.set({ "n", "x" }, "z[", "[z", { desc = "move to start of current fold" })
+vim.keymap.set({ "n", "x" }, "z]", "]z", { desc = "move to end of current fold" })
