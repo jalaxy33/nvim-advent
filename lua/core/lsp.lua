@@ -21,12 +21,13 @@
 --  Please install the specific language servers first and make sure they can be found in `$PATH`. For example, `lua-language-server` for lua.
 --
 
+local lsproot = "lsp"
 
 -- ===================================
 -- Helper Functions
 -- ===================================
 
-local function enable_lsp(lsproot, name)
+local function enable_lsp(name)
   require(lsproot .. "." .. name)
 end
 
@@ -46,16 +47,14 @@ vim.diagnostic.config({
 -- ===================================
 -- Enable LSP servers
 -- ===================================
-local lsproot = "lsp"
 
-enable_lsp(lsproot, "lua")      -- [lua]
-enable_lsp(lsproot, "python")   -- [python]
-enable_lsp(lsproot, "rust")     -- [rust]
-enable_lsp(lsproot, "markdown") -- [markdown]
-
+enable_lsp("lua")      -- [lua]
+enable_lsp("python")   -- [python]
+enable_lsp("rust")     -- [rust]
+enable_lsp("markdown") -- [markdown]
 
 -- enable efm to support formatters & linters
-enable_lsp(lsproot, "efm")
+enable_lsp("efm")
 
 -- buffer/path/snippets completion
-enable_lsp(lsproot, "basics")
+enable_lsp("basics")

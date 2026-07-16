@@ -43,7 +43,7 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
 5. Register in `lua/core/lsp.lua`:
 
    ```lua
-   enable_lsp(lsproot, "lua")
+   enable_lsp("lua")
    ```
 
 ## Configuring Formatters
