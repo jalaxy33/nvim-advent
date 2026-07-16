@@ -50,7 +50,7 @@ vim.lsp.config("lua_ls", {
     Lua = {
       diagnostics = { globals = { "vim" } },
       telemetry = { enable = false },
-      completion = { callSnipper = "Replace" },
+      completion = { callSnippet = "Replace" },
     },
   },
 })
