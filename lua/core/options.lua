@@ -92,7 +92,14 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99   -- default foldlevel (99 - unfold all)
 vim.opt.foldlevelstart = 99
 vim.opt.foldcolumn = "0" -- disable extra fold-column
+vim.opt.foldtext = "v:lua.CustomFoldText()"
 
+-- Custom fold text: show first line + folded line count
+function _G.CustomFoldText()
+  local line = vim.fn.getline(vim.v.foldstart)
+  local count = vim.v.foldend - vim.v.foldstart + 1
+  return string.format("%s   %d lines", line, count)
+end
 
 -- ===================================
 -- Conditional Options
