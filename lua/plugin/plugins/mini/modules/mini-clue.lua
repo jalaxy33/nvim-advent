@@ -30,8 +30,11 @@ miniclue.setup({
     -- Window commands
     { mode = 'n',          keys = '<C-w>' },
 
-    -- `z` key
+    -- Folding
     { mode = { 'n', 'x' }, keys = 'z' },
+
+    -- buffer
+    { mode = 'n',          keys = 'b' },
 
     -- insert mode
     { mode = { 'i' },      keys = '<C-x>' }
