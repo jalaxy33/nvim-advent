@@ -37,9 +37,12 @@ end
 --- Setup ---
 
 -- register formatters and linters
-local prettierd = get_formatter("prettier_d")
 local fish_indent = get_formatter("fish_indent")
 local ruff = get_formatter("ruff")
+local prettierd = {
+  formatCommand = 'prettierd "${INPUT}"',
+  formatStdin = true,
+}
 local shfmt = {
   -- set bash/zsh indent to % spaces (using `-i` arg)
   formatCommand = "shfmt -ci -s -bn" .. " -i 2",
@@ -52,7 +55,6 @@ local languages = {
   -- format by prettierd
   css = { prettierd },
   html = { prettierd },
-  json = { prettierd },
   markdown = { prettierd },
   javascript = { prettierd },
   typescript = { prettierd },
@@ -60,6 +62,8 @@ local languages = {
   sh = { shfmt },
   zsh = { shfmt },
   fish = { fish_indent },
+  -- config files
+  json = { prettierd },
   -- languages
   python = { ruff },
 }
