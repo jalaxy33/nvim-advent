@@ -119,3 +119,23 @@ if is_os_unix() and command_exists(vim.g.unix_shell) then
 elseif is_os_windows() and command_exists(vim.g.win_shell) then
   vim.o.shell = vim.g.win_shell
 end
+
+
+-- sync remote clipboard
+if vim.env.SSH_TTY then
+  local function paste()
+    return vim.split(vim.fn.getreg(""), "\n")
+  end
+
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = paste,
+      ["*"] = paste,
+    },
+  }
+end
