@@ -2,8 +2,12 @@
 --
 -- An unofficial collection of linters and formatters configured for efm-langserver for neovim.
 --
+-- https://github.com/creativenull/efmls-configs-nvim
+--
+
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  'https://github.com/creativenull/efmls-configs-nvim'
+  get_repo('creativenull', 'efmls-configs-nvim')
 })
-

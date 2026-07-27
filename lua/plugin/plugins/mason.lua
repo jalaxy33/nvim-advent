@@ -2,6 +2,8 @@
 --
 -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
 --
+-- https://github.com/mason-org/mason.nvim
+--
 -- New Commands:
 --  :Mason                        - opens a graphical status window
 --  :MasonUpdate                  - updates all managed registries
@@ -15,14 +17,18 @@
 --    :lua print(vim.fn.exepath('tree-sitter'))  -- check which `tree-sitter-cli` you are using
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  'https://github.com/mason-org/mason.nvim',
-  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  get_repo("mason-org", "mason.nvim"),
+  get_repo("WhoIsSethDaniel", "mason-tool-installer.nvim"),
 })
 
 if vim.g.mason_lsp_autoenable then
-  vim.pack.add({ 'https://github.com/mason-org/mason-lspconfig.nvim' })
+  vim.pack.add({
+    get_repo("mason-org", "mason-lspconfig.nvim")
+  })
 end
 
 
@@ -42,8 +48,24 @@ if vim.fn.has('unix') then -- only auto-install in Linux/MacOS
 end
 
 
+--- Helper Functions ---
+
+local function get_github_url()
+  local github_url = vim.g.github_url or "https://github.com/"
+  -- ensure end with '/'
+  if github_url:sub(-1) ~= "/" then
+    github_url = github_url .. "/"
+  end
+  return github_url
+end
+
+
 --- Setup ---
-require("mason").setup({})
+require("mason").setup({
+  github = {
+    download_url_template = get_github_url() .. "%s/releases/download/%s/%s",
+  },
+})
 require("mason-tool-installer").setup({
   ensure_installed = ensure_installed,
 })

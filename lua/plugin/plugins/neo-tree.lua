@@ -2,6 +2,8 @@
 --
 --  Tree-style file browser.
 --
+--  https://github.com/nvim-neo-tree/neo-tree.nvim
+--
 --  New commands:
 --    `:Neotree`
 --
@@ -12,14 +14,17 @@
 --    require('mini.icons').mock_nvim_web_devicons()
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
+
 vim.pack.add({
   {
-    src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
+    src = get_repo("nvim-neo-tree", "neo-tree.nvim"),
     version = vim.version.range("3"),
   },
   -- dependencies
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/MunifTanjim/nui.nvim",
+  get_repo("nvim-lua", "plenary.nvim"),
+  get_repo("MunifTanjim", "nui.nvim"),
 })
 
 --- Setup ---

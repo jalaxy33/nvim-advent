@@ -1,12 +1,18 @@
 -- `toggleterm.nvim` using vim.pack
+--
+--  https://github.com/akinsho/toggleterm.nvim
+--
+
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  'https://github.com/akinsho/toggleterm.nvim'
+  get_repo("akinsho", "toggleterm.nvim")
 })
 
 --- Setup ---
 require("toggleterm").setup({
-  open_mapping = "<C-`>",    -- you could set toggle keymap here
+  open_mapping = "<C-`>", -- you could set toggle keymap here
 })
 
 -- ===================================

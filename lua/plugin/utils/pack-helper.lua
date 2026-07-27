@@ -1,4 +1,5 @@
 -- Helpers for `vim.pack` plugin manager
+local M = {}
 
 -- ===================================
 -- Helper Functions
@@ -32,8 +33,26 @@ end
 
 
 -- ===================================
+-- Functions to Export
+-- ===================================
+
+-- get github repo: 'https://github.com/{repo_owner}/{repo_name}'
+M.get_repo = function(repo_owner, repo_name)
+  local github_url = vim.g.github_url or "https://github.com/"
+  -- ensure end with '/'
+  if github_url:sub(-1) ~= "/" then
+    github_url = github_url .. "/"
+  end
+  return github_url .. repo_owner .. '/' .. repo_name
+end
+
+
+-- ===================================
 -- Keymaps
 -- ===================================
 
 vim.keymap.set("n", "<leader>pu", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Plugins" })
 vim.keymap.set("n", "<leader>pc", pack_clean, { desc = "Clean unused plugins" })
+
+
+return M

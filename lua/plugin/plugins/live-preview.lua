@@ -2,14 +2,19 @@
 --
 -- View Markdown, HTML, SVG and more in web browser with live updates.
 --
+-- https://github.com/brianhuster/live-preview.nvim
+--
 -- One of the following picker plugins is needed: `telescope.nvim`, `fzf-lua`, `mini.pick`, `snacks.nvim`
 --
 -- New Commands:
 --    :LivePreview
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
+
 vim.pack.add({
-  'https://github.com/brianhuster/live-preview.nvim'
+  get_repo("brianhuster", "live-preview.nvim")
 })
 
 --- Setup ---

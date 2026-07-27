@@ -1,7 +1,13 @@
 -- `bufferline.nvim` using vim.pack
+--
+-- https://github.com/akinsho/bufferline.nvim
+--
+
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  'https://github.com/akinsho/bufferline.nvim'
+  get_repo("akinsho", "bufferline.nvim")
 })
 
 --- Setup ---
