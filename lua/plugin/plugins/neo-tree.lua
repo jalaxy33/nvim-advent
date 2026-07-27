@@ -19,12 +19,12 @@ local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
   {
-    src = get_repo("nvim-neo-tree", "neo-tree.nvim"),
+    src = get_repo("nvim-neo-tree/neo-tree.nvim"),
     version = vim.version.range("3"),
   },
   -- dependencies
-  get_repo("nvim-lua", "plenary.nvim"),
-  get_repo("MunifTanjim", "nui.nvim"),
+  get_repo("nvim-lua/plenary.nvim"),
+  get_repo("MunifTanjim/nui.nvim"),
 })
 
 --- Setup ---

@@ -21,13 +21,13 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("mason-org", "mason.nvim"),
-  get_repo("WhoIsSethDaniel", "mason-tool-installer.nvim"),
+  get_repo("mason-org/mason.nvim"),
+  get_repo("WhoIsSethDaniel/mason-tool-installer.nvim"),
 })
 
 if vim.g.mason_lsp_autoenable then
   vim.pack.add({
-    get_repo("mason-org", "mason-lspconfig.nvim")
+    get_repo("mason-org/mason-lspconfig.nvim")
   })
 end
 

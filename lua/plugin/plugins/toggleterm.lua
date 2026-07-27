@@ -7,7 +7,7 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("akinsho", "toggleterm.nvim")
+  get_repo("akinsho/toggleterm.nvim")
 })
 
 --- Setup ---

@@ -10,10 +10,10 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("nvim-mini", "mini.nvim"),
+  get_repo("nvim-mini/mini.nvim"),
 
   -- optional dependencies for `mini.snippets`
-  get_repo("rafamadriz", "friendly-snippets"),
+  get_repo("rafamadriz/friendly-snippets"),
 })
 
 

@@ -2,6 +2,8 @@
 --
 -- Lightweight yet powerful formatter plugin for Neovim
 --
+-- https://github.com/stevearc/conform.nvim
+--
 -- Check supported formatters by `:h conform-formatters`, or visit
 --    https://github.com/stevearc/conform.nvim#formatters
 --
@@ -9,8 +11,11 @@
 --    :ConformInfo  - check formatter status
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
+
 vim.pack.add({
-  'https://github.com/stevearc/conform.nvim'
+  get_repo("stevearc/conform.nvi")
 })
 
 --- Setup ---

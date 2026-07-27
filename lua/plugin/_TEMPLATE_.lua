@@ -1,13 +1,13 @@
 -- `<PLUGIN>` using vim.pack
 --
--- https://github.com/REPO_OWNER/REPO_NAME
+-- https://github.com/REPO_NAME
 --
 
 --- Add Pack ---
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo('REPO_OWNER', 'REPO_NAME')
+  get_repo('REPO_NAME')
 })
 
 --- Setup ---
