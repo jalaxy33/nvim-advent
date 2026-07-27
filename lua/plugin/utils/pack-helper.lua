@@ -36,16 +36,15 @@ end
 -- Functions to Export
 -- ===================================
 
--- get github repo: 'https://github.com/{repo_owner}/{repo_name}'
-M.get_repo = function(repo_owner, repo_name)
+-- get github repo: 'https://github.com/{repo_name}'
+M.get_repo = function(repo_name)
   local github_url = vim.g.github_url or "https://github.com/"
   -- ensure end with '/'
   if github_url:sub(-1) ~= "/" then
     github_url = github_url .. "/"
   end
-  return github_url .. repo_owner .. '/' .. repo_name
+  return github_url .. repo_name
 end
-
 
 -- ===================================
 -- Keymaps

@@ -7,7 +7,7 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("akinsho", "bufferline.nvim")
+  get_repo("akinsho/bufferline.nvim")
 })
 
 --- Setup ---

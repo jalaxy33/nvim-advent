@@ -15,7 +15,7 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("nvim-treesitter", "nvim-treesitter")
+  get_repo("nvim-treesitter/nvim-treesitter")
 })
 
 

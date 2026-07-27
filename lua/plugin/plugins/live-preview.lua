@@ -14,7 +14,7 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("brianhuster", "live-preview.nvim")
+  get_repo("brianhuster/live-preview.nvim")
 })
 
 --- Setup ---
