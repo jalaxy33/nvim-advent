@@ -2,6 +2,8 @@
 --
 -- Treesitter configs for more languages. [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) is required.
 --
+-- https://github.com/nvim-treesitter/nvim-treesitter
+--
 -- Check treesitter status by:
 --    :checkhealth nvim-treesitter   -- this plugin
 --    :checkhealth vim.treesitter    -- neovim built-in
@@ -9,8 +11,11 @@
 -- Supported languages can be found in [this page](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md).
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
+
 vim.pack.add({
-  'https://github.com/nvim-treesitter/nvim-treesitter'
+  get_repo("nvim-treesitter", "nvim-treesitter")
 })
 
 

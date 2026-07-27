@@ -2,12 +2,17 @@
 --
 -- picker & fuzzy finder
 --
+-- https://github.com/ibhagwan/fzf-lua
+--
 -- New Commands:
 --  :FzfLua
 --
 
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
+
 vim.pack.add({
-  'https://github.com/ibhagwan/fzf-lua'
+  get_repo("ibhagwan", "fzf-lua")
 })
 
 --- Setup ---

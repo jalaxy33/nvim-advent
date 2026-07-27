@@ -2,12 +2,18 @@
 --
 --  A library of 45+ independent lua modules like statusline.
 --
+-- https://github.com/nvim-mini/mini.nvim
+--
+
+
+--- Add Pack ---
+local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  'https://github.com/nvim-mini/mini.nvim',
+  get_repo("nvim-mini", "mini.nvim"),
 
   -- optional dependencies for `mini.snippets`
-  'https://github.com/rafamadriz/friendly-snippets',
+  get_repo("rafamadriz", "friendly-snippets"),
 })
 
 
