@@ -38,8 +38,4 @@ local ensure_installed = {
   -- e.g. markdown, lua, vim... (run `:checkhealth vim.treesitter`)
 }
 
-NvimTS = require("nvim-treesitter")
-NvimTS.setup({
-  install_dir = vim.fn.stdpath('data') .. 'nvim-treesitter'
-})
-NvimTS.install(ensure_installed)
+require("nvim-treesitter").install(ensure_installed)
