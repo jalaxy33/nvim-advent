@@ -9,6 +9,8 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 - Node.js and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - a C/C++ compiler (e.g. gcc)
 
+If you are using NixOS, to enable dynamic linker. Please make sure [nix-ld](https://github.com/nix-community/nix-ld) is globally enabled.
+
 ## How to use
 
 - Make a backup of your current Neovim files:
