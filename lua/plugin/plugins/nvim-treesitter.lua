@@ -38,15 +38,4 @@ local ensure_installed = {
   -- e.g. markdown, lua, vim... (run `:checkhealth vim.treesitter`)
 }
 
--- Disable auto-install in NixOS
-if vim.fn.has("linux") == 1 then
-  local os_release = vim.fn.readfile("/etc/os-release", "", 10)
-  for _, line in ipairs(os_release) do
-    if line == "ID=nixos" then
-      ensure_installed = {}
-      break
-    end
-  end
-end
-
 require("nvim-treesitter").install(ensure_installed)
