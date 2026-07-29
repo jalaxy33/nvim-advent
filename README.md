@@ -6,6 +6,7 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 
 - [Neovim](https://neovim.io/) 0.12 or newer
 - a [Nerd Font](https://www.nerdfonts.com/) (Optional)
+- Node.js and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ## How to use
 
