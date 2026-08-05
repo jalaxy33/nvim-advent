@@ -37,7 +37,10 @@ miniclue.setup({
     { mode = 'n',          keys = 'b' },
 
     -- insert mode
-    { mode = { 'i' },      keys = '<C-x>' }
+    { mode = { 'i' },      keys = '<C-x>' },
+
+    -- LSP action
+    { mode = { 'n', 'x' }, keys = 'g' },
   },
 
   clues = {
