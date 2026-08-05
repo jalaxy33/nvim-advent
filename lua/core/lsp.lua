@@ -52,6 +52,7 @@ enable_lsp("lua")      -- [lua]
 enable_lsp("python")   -- [python]
 enable_lsp("rust")     -- [rust]
 enable_lsp("markdown") -- [markdown]
+enable_lsp("haskell")  -- [haskell]
 
 -- enable efm to support formatters & linters
 enable_lsp("efm")
