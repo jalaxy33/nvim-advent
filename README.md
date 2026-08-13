@@ -9,7 +9,7 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 - Node.js and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - a C/C++ compiler (e.g. gcc)
 
-If you are using NixOS, to enable dynamic linker. Please make sure [nix-ld](https://github.com/nix-community/nix-ld) is globally enabled.
+If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](https://github.com/nix-community/nix-ld) is globally enabled.
 
 ## How to use
 
@@ -45,11 +45,27 @@ If you are using NixOS, to enable dynamic linker. Please make sure [nix-ld](http
     git clone https://github.com/jalaxy33/nvim-advent ~/.config/nvim
     ```
 
+    <details><summary>Easier clone for CN user</summary>
+
+    ```sh
+    git clone https://gh-proxy.org/https://github.com/jalaxy33/nvim-advent ~/.config/nvim
+    ```
+
+    </details>
+
   - Windows (with powershell)
 
     ```sh
     git clone https://github.com/jalaxy33/nvim-advent $env:LOCALAPPDATA\nvim
     ```
+
+    <details><summary>Easier clone for CN user</summary>
+
+    ```sh
+    git clone https://gh-proxy.org/https://github.com/jalaxy33/nvim-advent $env:LOCALAPPDATA\nvim
+    ```
+
+    </details>
 
 - (Optional) Remove the `.git` folder, so you can add it to your own repo later
 
