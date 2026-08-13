@@ -37,7 +37,6 @@ local ensure_installed = {
   'tree-sitter-cli',
   'lua-language-server',
   'efm',
-  'basics-language-server',
   'prettierd',
   'markdown-oxide',
 }
