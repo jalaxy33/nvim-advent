@@ -3,7 +3,10 @@
 -- LSP provided by [marksman](https://github.com/artempyanykh/marksman).
 -- Please install it globally, or install by Mason `:MasonInstall marksman`
 --
+-- LSP provided by [markdown-oxide](https://github.com/Feel-ix-343/markdown-oxide).
+-- Please install it globally, or install by Mason `:MasonInstall marksman`
+--
 
 
 -- enable LSP
-vim.lsp.enable('marksman')
+vim.lsp.enable('markdown-oxide')

@@ -32,7 +32,7 @@ end
 require('mini.statusline').setup()
 
 -- autopairs
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
 
 -- extend a/i behaviors
 require("mini.ai").setup()
