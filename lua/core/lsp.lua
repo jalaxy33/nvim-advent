@@ -56,6 +56,3 @@ enable_lsp("haskell")  -- [haskell]
 
 -- enable efm to support formatters & linters
 enable_lsp("efm")
-
--- buffer/path/snippets completion
-enable_lsp("basics")

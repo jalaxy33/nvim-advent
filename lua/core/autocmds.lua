@@ -85,3 +85,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+
+
+-- Auto-trigger built-in file completion (<C-x><C-f>) on path chars.
+-- Skips when a popup is already visible (e.g. LSP from mini.completion),
+-- and skips URLs / line comments containing "//" (e.g. "https://").
+vim.api.nvim_create_autocmd("TextChangedI", {
+  desc = "Auto file completion on paths",
+  group = augroup,
+  callback = function()
+    if vim.fn.pumvisible() ~= 0 then return end
+
+    local before = vim.api.nvim_get_current_line():sub(1, vim.fn.col(".") - 1)
+    local token = before:match('[^%s"\'`]*$') or ""
+
+    if token:find("[/~]") and not token:find("//") and not token:find(":/") then
+      vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<C-g><C-g><C-x><C-f>", true, false, true), "n", false)
+    end
+  end,
+})
