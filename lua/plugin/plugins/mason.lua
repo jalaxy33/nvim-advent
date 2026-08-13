@@ -39,6 +39,7 @@ local ensure_installed = {
   'efm',
   'basics-language-server',
   'prettierd',
+  'markdown-oxide',
 }
 
 if vim.fn.has('unix') then -- only auto-install in Linux/MacOS
