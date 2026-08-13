@@ -100,7 +100,7 @@ vim.api.nvim_create_autocmd("TextChangedI", {
     local before = vim.api.nvim_get_current_line():sub(1, vim.fn.col(".") - 1)
     local token = before:match('[^%s"\'`]*$') or ""
 
-    if token:find("[/~]") and not token:find("//") and not token:find(":/") then
+    if token:find("[/~]") and not token:find("</") and not token:find("//") and not token:find(":/") then
       vim.api.nvim_feedkeys(
         vim.api.nvim_replace_termcodes("<C-g><C-g><C-x><C-f>", true, false, true), "n", false)
     end
