@@ -34,12 +34,15 @@ end
 
 --- set auto-installed LSP ---
 local ensure_installed = {
-  'tree-sitter-cli',
   'lua-language-server',
   'efm',
   'prettierd',
   'markdown-oxide',
 }
+
+if vim.g.treesitter_autoinstall then
+  ensure_installed = vim.list_extend(ensure_installed, { "tree-sitter-cli" })
+end
 
 if vim.fn.has('unix') then -- only auto-install in Linux/MacOS
   ensure_installed = vim.list_extend(ensure_installed, {
