@@ -11,6 +11,15 @@
 -- Supported languages can be found in [this page](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md).
 --
 
+-- Pre-check: `tree-sitter` CLI is required
+if vim.fn.executable("tree-sitter") == 0 then
+  vim.notify(
+    "nvim-treesitter: 'tree-sitter' command not found, skipping treesitter config",
+    vim.log.levels.WARN
+  )
+  return
+end
+
 --- Add Pack ---
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
