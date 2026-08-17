@@ -7,6 +7,8 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 - [Neovim](https://neovim.io/) 0.12 or newer
 - a [Nerd Font](https://www.nerdfonts.com/) (Optional)
 - Node.js and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md): Install via package manager, **not npm**. 
+  > You can also install it automatically by setting `vim.g.treesitter_autoinstall` to `true` in [lua/core/options.lua](./lua/core/options.lua). But it may fail occasionally.
 - a C/C++ compiler (e.g. gcc)
 
 If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](https://github.com/nix-community/nix-ld) is globally enabled.
