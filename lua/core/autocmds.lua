@@ -93,25 +93,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Only triggers when the leading "/" is preceded by "~", "." or a space
 -- (e.g. "~/", "./", "cd /"), so it never fires on absolute paths at line
 -- start, "a/b", "https://", line comments "//", etc.
-vim.api.nvim_create_autocmd("TextChangedI", {
-  desc = "Auto file completion on paths",
-  group = augroup,
-  callback = function()
-    if vim.fn.pumvisible() ~= 0 then return end
-
-    local before = vim.api.nvim_get_current_line():sub(1, vim.fn.col(".") - 1)
-    local token = before:match('[^%s"\'`]*$') or ""
-
-    -- Position of the first "/" inside the last word (token is a suffix of `before`)
-    local slash_idx = token:find("/")
-    if slash_idx then
-      -- The character right before that slash
-      local prev = before:sub(#before - #token + slash_idx - 1, #before - #token + slash_idx - 1)
-      if (prev == "~" or prev == "." or prev == " ")
-          and not token:find("//") and not token:find(":/") then
-        vim.api.nvim_feedkeys(
-          vim.api.nvim_replace_termcodes("<C-g><C-g><C-x><C-f>", true, false, true), "n", false)
-      end
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("TextChangedI", {
+--   desc = "Auto file completion on paths",
+--   group = augroup,
+--   callback = function()
+--     if vim.fn.pumvisible() ~= 0 then return end
+--
+--     local before = vim.api.nvim_get_current_line():sub(1, vim.fn.col(".") - 1)
+--     local token = before:match('[^%s"\'`]*$') or ""
+--
+--     -- Position of the first "/" inside the last word (token is a suffix of `before`)
+--     local slash_idx = token:find("/")
+--     if slash_idx then
+--       -- The character right before that slash
+--       local prev = before:sub(#before - #token + slash_idx - 1, #before - #token + slash_idx - 1)
+--       if (prev == "~" or prev == "." or prev == " ")
+--           and not token:find("//") and not token:find(":/") then
+--         vim.api.nvim_feedkeys(
+--           vim.api.nvim_replace_termcodes("<C-g><C-g><C-x><C-f>", true, false, true), "n", false)
+--       end
+--     end
+--   end,
+-- })
