@@ -10,6 +10,7 @@
 
 vim.g.format_on_save = false
 vim.g.native_autocomplete = false    -- use native autocomplete or not
+vim.g.autocomplete_fallback = false  -- use fallback autocomplete (mini.completion)
 vim.g.mason_lsp_autoenable = false   -- auto-enable Mason installed LSP (for debugging)
 vim.g.treesitter_autoinstall = false -- auto-install tree-sitter-cli
 vim.g.unix_shell = "fish"            -- shell to use on linux/macos
@@ -20,13 +21,6 @@ if vim.g.github_url:sub(-1) ~= "/" then
   -- ensure end with '/'
   vim.g.github_url = vim.g.github_url .. "/"
 end
-
-
--- ===================================
--- Global Status Varables (don't touch this)
--- ===================================
-
-vim.g.s_autocomplete_fallback = false
 
 
 -- ===================================
