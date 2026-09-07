@@ -57,10 +57,8 @@ load_module("mini-icons")
 -- TODO highlight
 load_module("mini-hipatterns")
 
--- completion & signature help
--- if not vim.g.native_autocomplete then
---   load_module("mini-completion")
--- end
+-- completion & signature help (as fallback)
+load_module("mini-completion")
 
 -- snippets
 load_module("mini-snippets")
