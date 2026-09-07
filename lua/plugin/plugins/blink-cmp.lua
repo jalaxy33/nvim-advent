@@ -10,11 +10,13 @@ if vim.g.native_autocomplete then return end
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 if vim.fn.executable("cargo") == 1 then
+  -- cargo exist -> use v2
   vim.pack.add({
     get_repo('saghen/blink.lib'),
     get_repo('saghen/blink.cmp'),
   })
 else
+  -- cargo not exist -> fallback to v1
   vim.pack.add({
     {
       src = get_repo('saghen/blink.cmp'),
