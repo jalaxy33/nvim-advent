@@ -15,24 +15,14 @@ vim.pack.add({
 })
 
 --- Setup ---
+local cmp = require("blink.cmp")
 
--- lazy load on first insert mode entry (may not necessary)
-local group = vim.api.nvim_create_augroup("BlinkCmpLazyLoad", { clear = true })
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-  pattern = "*",
-  group = group,
-  once = true,
-  callback = function()
-    local cmp = require("blink.cmp")
-    cmp.build():pwait()
-    cmp.setup({
-      completion = {
-        trigger = { show_on_insert = true, },
-        ghost_text = { enabled = true },
-        documentation = { auto_show = true, },
-      },
-      signature = { enabled = true, },
-    })
-  end,
+cmp.build():pwait()
+cmp.setup({
+  completion = {
+    trigger = { show_on_insert = true, },
+    ghost_text = { enabled = true },
+    documentation = { auto_show = true, },
+  },
+  signature = { enabled = true, },
 })
