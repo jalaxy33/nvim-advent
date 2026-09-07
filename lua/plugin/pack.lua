@@ -42,6 +42,9 @@ load_plugin("bufferline")
 -- Git integration
 load_plugin("gitsigns") -- git integration for buffer
 
+-- Auto completion
+load_plugin("blink-cmp")
+
 -- Misc
 load_plugin("mini")         -- collections of plugins
 load_plugin("live-preview") -- preview Markdown/HTML in browser
