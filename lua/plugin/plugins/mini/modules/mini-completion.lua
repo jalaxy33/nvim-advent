@@ -5,10 +5,9 @@
 
 -- early return when disabled
 if vim.g.native_autocomplete
-    or not vim.g.s_autocomplete_fallback then
+    or not vim.g.autocomplete_fallback then
   return
 end
-
 
 -- initailization
 local mini_completion = require("mini.completion")

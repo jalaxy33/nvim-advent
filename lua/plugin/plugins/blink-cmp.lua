@@ -6,7 +6,7 @@
 -- early return when disable or unable to use
 if vim.g.native_autocomplete then return end
 if vim.fn.executable("cargo") == 0 then
-  vim.g.s_autocomplete_fallback = true
+  vim.g.autocomplete_fallback = true
   return
 end
 
