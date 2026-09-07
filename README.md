@@ -10,6 +10,8 @@ My debloated [NeoVim](https://neovim.io/) configs, guided by KISS (Keep It Simpl
 - [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md): Install via package manager, **not npm**.
   > You can also install it automatically by setting `vim.g.treesitter_autoinstall` to `true` in [lua/core/options.lua](./lua/core/options.lua). But it may fail occasionally.
 - a C/C++ compiler (e.g. gcc)
+- [Rust toolchain](https://rust-lang.org/install.html) (Optional)
+  > For `blink.cmp`, a convenient completion plugin. If not, will fallback to `mini.completion` to provide auto-completion.
 
 If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](https://github.com/nix-community/nix-ld) is globally enabled.
 
