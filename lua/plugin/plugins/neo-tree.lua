@@ -42,3 +42,12 @@ require("neo-tree").setup({
 
 --- Keymaps ---
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree reveal toggle<cr>", { desc = "Toggle Neotree" })
+
+
+--- Autocmds ---
+---
+-- disable auto-completion when toggle neo-tree
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "neo-tree*",
+  callback = function() vim.b.completion = false end,
+})
