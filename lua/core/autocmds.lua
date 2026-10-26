@@ -87,31 +87,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
-
--- Auto-trigger built-in file completion (<C-x><C-f>) on path chars.
--- Skips when a popup is already visible (e.g. LSP from mini.completion).
--- Only triggers when the leading "/" is preceded by "~", "." or a space
--- (e.g. "~/", "./", "cd /"), so it never fires on absolute paths at line
--- start, "a/b", "https://", line comments "//", etc.
--- vim.api.nvim_create_autocmd("TextChangedI", {
---   desc = "Auto file completion on paths",
---   group = augroup,
---   callback = function()
---     if vim.fn.pumvisible() ~= 0 then return end
---
---     local before = vim.api.nvim_get_current_line():sub(1, vim.fn.col(".") - 1)
---     local token = before:match('[^%s"\'`]*$') or ""
---
---     -- Position of the first "/" inside the last word (token is a suffix of `before`)
---     local slash_idx = token:find("/")
---     if slash_idx then
---       -- The character right before that slash
---       local prev = before:sub(#before - #token + slash_idx - 1, #before - #token + slash_idx - 1)
---       if (prev == "~" or prev == "." or prev == " ")
---           and not token:find("//") and not token:find(":/") then
---         vim.api.nvim_feedkeys(
---           vim.api.nvim_replace_termcodes("<C-g><C-g><C-x><C-f>", true, false, true), "n", false)
---       end
---     end
---   end,
--- })
+-- fcitx5
+local fcitx_st = ""
+vim.api.nvim_create_autocmd("InsertLeave",
+  {
+    callback = function()
+      fcitx_st = vim.fn.system("fcitx5-remote"); vim.fn.jobstart("fcitx5-remote -c")
+    end
+  })
+vim.api.nvim_create_autocmd("InsertEnter",
+  { callback = function() if fcitx_st:match("2") then vim.fn.jobstart("fcitx5-remote -o") end end })
+vim.api.nvim_create_autocmd("VimEnter", { callback = function() vim.fn.jobstart("fcitx5-remote -c") end })
