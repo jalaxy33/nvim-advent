@@ -5,11 +5,6 @@
 
 -- early return when disable or unable to use
 if vim.g.native_autocomplete then return end
-if vim.fn.executable("cargo") == 0 then
-  vim.g.autocomplete_fallback = true
-  return
-end
-
 
 --- Add Pack ---
 local get_repo = require("plugin.utils.pack-helper").get_repo

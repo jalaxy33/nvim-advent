@@ -14,6 +14,9 @@ vim.pack.add({
 
   -- optional dependencies for `mini.snippets`
   get_repo("rafamadriz/friendly-snippets"),
+
+  -- optional dependency for `mini.completion`
+  get_repo("antonk52/filepaths_ls.nvim"),
 })
 
 
@@ -57,7 +60,7 @@ load_module("mini-icons")
 -- TODO highlight
 load_module("mini-hipatterns")
 
--- completion & signature help (as fallback)
+-- completion & signature help
 load_module("mini-completion")
 
 -- snippets
