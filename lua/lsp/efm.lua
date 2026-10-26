@@ -64,6 +64,7 @@ local languages = {
   fish = { fish_indent },
   -- config files
   json = { prettierd },
+  yaml = { prettierd },
   -- languages
   python = { ruff },
 }
