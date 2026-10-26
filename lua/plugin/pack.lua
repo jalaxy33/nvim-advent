@@ -45,12 +45,14 @@ load_plugin("gitsigns") -- git integration for buffer
 -- Auto completion
 load_plugin("blink-cmp")
 
+-- Formatters
+load_plugin("conform")
+
 -- Misc
 load_plugin("mini")         -- collections of plugins
 load_plugin("live-preview") -- preview Markdown/HTML in browser
 
 -- LSP
-load_plugin("nvim-treesitter")    -- treesitter configs for more languages
-load_plugin("nvim-lspconfig")     -- quickstart LSP configs
-load_plugin("mason")              -- LSP installation
-load_plugin("efmls-configs-nvim") -- formatters & linters for efm
+load_plugin("nvim-treesitter") -- treesitter configs for more languages
+load_plugin("nvim-lspconfig")  -- quickstart LSP configs
+load_plugin("mason")           -- LSP installation
