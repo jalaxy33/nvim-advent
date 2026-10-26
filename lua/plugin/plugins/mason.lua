@@ -35,9 +35,8 @@ end
 --- set auto-installed LSP ---
 local ensure_installed = {
   'lua-language-server',
-  'efm',
-  'prettierd',
-  'markdown-oxide',
+  "oxfmt",
+  "rumdl",
 }
 
 if vim.g.treesitter_autoinstall then

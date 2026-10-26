@@ -21,6 +21,10 @@
 --    }
 --    ```
 --
+-- - Activate efm formatter by putting following line in `core/lsp.lua`:
+--    ```
+--    enable_lsp("efm")
+--    ```
 
 
 --- Helper Functions ---

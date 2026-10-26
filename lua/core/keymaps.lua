@@ -182,7 +182,8 @@ vim.keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename, { desc = "Rename Symbol
 vim.keymap.set('i', "<A-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })             -- default <C-s>
 vim.keymap.set('n', "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
--- Formatting
+-- Formatting 
+-- default keymap, might be overrided by plugins like `conform.nvim`
 vim.keymap.set({ "n", "i", "x" }, "<A-F>", function()
   vim.lsp.buf.format({ async = true })
   -- notify formatting message

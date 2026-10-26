@@ -15,32 +15,51 @@
 local get_repo = require("plugin.utils.pack-helper").get_repo
 
 vim.pack.add({
-  get_repo("stevearc/conform.nvi")
+  get_repo("stevearc/conform.nvim")
 })
 
 --- Setup ---
-require("conform").setup({
-  -- set formatters
+
+local Conform = require("conform")
+
+-- set formatters
+Conform.setup({
   formatters_by_ft = {
-    markdown = { "prettierd" },
-    json = { "prettierd" },
+    -- shell
     sh = { "shfmt" },
     zsh = { "shfmt" },
     fish = { "fish_indent" },
+    -- languages
+    markdown = { "rumdl" },
+    python = { "ruff" },
+    -- all-in-one (prettier/oxfmt)
+    css = { "oxfmt" },
+    html = { "oxfmt" },
+    javascript = { "oxfmt" },
+    javascriptreact = { "oxfmt" },
+    typescript = { "oxfmt" },
+    typescriptreact = { "oxfmt" },
+    json = { "oxfmt" },
+    vue = { "oxfmt" },
   },
-
-  -- additional settings
-  formatters = {
-    -- set bash/zsh indent to % spaces
-    shfmt = {
-      append_args = { "-i", "2" },
-    },
-  }
+  default_format_opts = {
+    lsp_format = "fallback",
+  },
 })
 
 
+
+-- formatter additional configs
+Conform.formatters = {
+  shfmt = {
+    -- set bash/zsh indent to % spaces
+    append_args = { "-i", "2" },
+  }
+
+}
+
+
 --- Keymaps ---
-local Conform = require("conform")
 
 -- format buffer
 vim.keymap.set({ 'n', 'x', 'i' }, "<A-F>", function()
