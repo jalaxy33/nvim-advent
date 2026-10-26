@@ -15,13 +15,11 @@ local function load_util(name)
   require(utilsdir .. "." .. name)
 end
 
-
 -- ===================================
 -- Load Utils
 -- ===================================
 
 load_util("pack-helper") -- helpers for `vim.pack` manager
-
 
 -- ===================================
 -- Load Plugins
@@ -41,9 +39,6 @@ load_plugin("bufferline")
 
 -- Git integration
 load_plugin("gitsigns") -- git integration for buffer
-
--- Auto completion
-load_plugin("blink-cmp")
 
 -- Formatters
 load_plugin("conform")
