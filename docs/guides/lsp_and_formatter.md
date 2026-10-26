@@ -4,7 +4,7 @@
 
 Procedure:
 
-```
+```text
 Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
 ```
 
@@ -14,15 +14,13 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
 
 2. Install the language server globally or by mason: `:MasonInstall lua-language-server`
 
-3. _(Optional)_ Auto-install on new machines: edit `lua/plugin/plugins/mason.lua`:
+3. _(Optional)_ Auto-install on new machines: add it to the `ensure_installed` list in `lua/plugin/plugins/mason.lua`:
 
    ```lua
-   require("mason-tool-installer").setup({
-     ensure_installed = {
-       -- ...existing...
-       'lua-language-server',
-     }
-   })
+   local ensure_installed = {
+     -- ...existing...
+     "lua-language-server",
+   }
    ```
 
 4. Create `lua/lsp/lua.lua`:
@@ -48,85 +46,112 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
 
 ## Configuring Formatters
 
-Formatters and linters are managed through [efm-langserver](https://github.com/mattn/efm-langserver), a general-purpose LSP that wraps external tools. The [efmls-configs-nvim](https://github.com/creativenull/efmls-configs-nvim) plugin provides pre-configured formatter/linter recipes.
+Formatters are managed by [conform.nvim](https://github.com/stevearc/conform.nvim).
+The configuration lives in `lua/plugin/plugins/conform.lua`; conform is loaded
+from `lua/plugin/pack.lua`, so no LSP registration is involved.
 
 Procedure:
 
+```text
+Find formatter → Install → lua/plugin/plugins/conform.lua (formatters_by_ft)
 ```
-Find formatter → lua/lsp/efm.lua
-```
 
-### Built-in formatter recipes (efmls-configs)
+### Built-in formatters
 
-1. Find supported formatters at `:h efmls-configs-setup` or the [supported list](https://github.com/creativenull/efmls-configs-nvim/blob/main/doc/SUPPORTED_LIST.md).
+1. Find the formatter name in `:h conform-formatters` or the
+   [formatter list](https://github.com/stevearc/conform.nvim#formatters).
 
-2. Install the formatter globally or by mason: `:MasonInstall prettierd`.
+2. Install it globally or with mason: `:MasonInstall oxfmt`.
 
-   For auto-install on new machines, add to `lua/plugin/plugins/mason.lua`:
-   ```lua
-   ensure_installed = { ..., 'prettierd' }
-   ```
-
-3. Register in `lua/lsp/efm.lua`:
+   To auto-install on new machines, add it to `ensure_installed` in
+   `lua/plugin/plugins/mason.lua`:
 
    ```lua
-   local function get_formatter(name)
-     require("efmls-configs.formatters." .. name)
-   end
-
-   local prettierd = get_formatter("prettier_d")
-   local ruff = get_formatter("ruff")
-
-   local languages = {
-     javascript = { prettierd },
-     typescript = { prettierd },
-     json = { prettierd },
-     markdown = { prettierd },
-     python = { ruff },
+   local ensure_installed = {
+     -- ...existing...
+     "oxfmt",
    }
    ```
 
-### Custom formatter recipes
+3. Add the filetype to the existing `formatters_by_ft` table in
+   `lua/plugin/plugins/conform.lua`:
 
-Define the command directly (instead of using `get_formatter()`) when:
+   ```lua
+   Conform.setup({
+     formatters_by_ft = {
+       -- ...
+       javascript = { "oxfmt" },
+       markdown = { "rumdl" },
+       python = { "ruff_format" },
+     },
+     default_format_opts = {
+       -- use LSP formatting when no conform formatter is available
+       lsp_format = "fallback",
+     },
+   })
+   ```
 
-- the tool is not in efmls-configs' supported list, or
-- you need to customize the default configuration (e.g. indent width, extra flags):
+Conform already ships the formatter definitions, so no `require()` call is
+needed. Multiple formatters for one filetype run in order; add
+`stop_after_first = true` to use the first available one.
+
+Check formatter detection with `:ConformInfo`.
+
+### Custom formatters
+
+Define a custom formatter when it is not in conform's list:
 
 ```lua
-local shfmt = {
-  formatCommand = "shfmt -ci -s -bn -i 2",
-  formatStdin = true,
+Conform.formatters.my_fmt = {
+  command = "myfmt",
+  args = { "--stdin-filepath", "$FILENAME" },
+  stdin = true,
 }
 
-local languages = {
-  sh = { shfmt },
-  zsh = { shfmt },
+Conform.setup({
+  formatters_by_ft = {
+    foo = { "my_fmt" },
+  },
+})
+```
+
+To adjust a built-in formatter, override only the fields you need; conform
+merges the result with the built-in definition:
+
+```lua
+Conform.formatters.shfmt = {
+  append_args = { "-i", "2" },
 }
 ```
 
-### Add linters
+Use `inherit = false` to replace the built-in definition completely. See
+`:h conform-options` and the README section "Customizing formatters".
 
-Linters work the same way via `require("efmls-configs.linters." .. name)`:
+### Linters
 
-```lua
-local function get_linter(name)
-  require("efmls-configs.linters." .. name)
-end
+Conform only formats; it does not run linters. The former efm-langserver setup
+is disabled and kept in `lua/lsp/unused/efm.lua`, with its plugin in
+`lua/plugin/unused/efmls-configs-nvim.lua`. Re-enable that setup or add a
+dedicated linter plugin if linting is needed.
 
-local languages = {
-  python = { ruff, get_linter("mypy") },
-}
-```
+### Formatting keymap
 
-### Global keymap for formatting
-
-Already configured in `lua/core/keymaps.lua`:
+`<A-F>` is defined in `lua/plugin/plugins/conform.lua`, overriding the fallback
+mapping in `lua/core/keymaps.lua` when the plugin loads:
 
 ```lua
-vim.keymap.set({ "n", "i", "x" }, "<A-F>", function()
-  vim.lsp.buf.format({ async = true })
-end, { desc = "Format buffer" })
+vim.keymap.set({ "n", "x", "i" }, "<A-F>", function()
+  if #Conform.list_formatters(0) > 0 then
+    Conform.format({ async = true })
+  else
+    vim.lsp.buf.format({ async = true })
+  end
+
+  local filepath = vim.fn.expand("%")
+  vim.notify(filepath .. " formatted (or failed).")
+end, { remap = true, desc = "Format Buffer" })
 ```
 
-Since efm is an LSP server, `vim.lsp.buf.format()` triggers it just like any language server.
+It uses conform when a formatter is available for the current buffer, otherwise
+falls back to LSP formatting. Run `:ConformInfo` to check formatter availability
+and the log file.

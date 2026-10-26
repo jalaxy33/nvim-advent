@@ -68,10 +68,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
 
-
     -- Auto-format ("lint") on save.
-    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    -- Set auto-format with `format_on_save` global var
+    -- This is the fallback for when conform is not loaded; conform handles
+    -- formatting (with its own LSP fallback) when it is available.
     if vim.g.format_on_save
         and not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
@@ -79,6 +78,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         group = augroup,
         buffer = ev.buf,
         callback = function()
+          if package.loaded["conform"] then return end
           vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
         end,
       })
