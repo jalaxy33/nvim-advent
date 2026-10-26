@@ -31,7 +31,7 @@ Conform.setup({
     fish = { "fish_indent" },
     -- languages
     markdown = { "rumdl" },
-    python = { "ruff" },
+    python = { "ruff_format" },
     -- all-in-one (prettier/oxfmt)
     css = { "oxfmt" },
     html = { "oxfmt" },
@@ -45,9 +45,17 @@ Conform.setup({
   default_format_opts = {
     lsp_format = "fallback",
   },
+  -- format on save when `vim.g.format_on_save` is enabled
+  format_on_save = function(_)
+    if not vim.g.format_on_save then
+      return nil
+    end
+    return {
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    }
+  end,
 })
-
-
 
 -- formatter additional configs
 Conform.formatters = {
