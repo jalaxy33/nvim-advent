@@ -23,7 +23,7 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
    }
    ```
 
-4. Create `lua/lsp/lua.lua`:
+4. Create `lua/lsp/langs/lua.lua`:
 
    ```lua
    -- config LSP
@@ -38,7 +38,7 @@ Find LSP → Install → mason.lua → lua/lsp/xxx.lua → lua/core/lsp.lua
    vim.lsp.enable('lua_ls')
    ```
 
-5. Register in `lua/core/lsp.lua`:
+5. Register in `lua/lsp/lsp.lua`:
 
    ```lua
    enable_lsp("lua")
