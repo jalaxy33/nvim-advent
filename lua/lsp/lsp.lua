@@ -21,7 +21,7 @@
 --  Please install the specific language servers first and make sure they can be found in `$PATH`. For example, `lua-language-server` for lua.
 --
 
-local lsproot = "lsp"
+local lsproot = "lsp.langs"
 
 -- ===================================
 -- Helper Functions
@@ -51,5 +51,4 @@ vim.diagnostic.config({
 enable_lsp("lua")      -- [lua]
 enable_lsp("python")   -- [python]
 enable_lsp("rust")     -- [rust]
-enable_lsp("markdown") -- [markdown]
 enable_lsp("haskell")  -- [haskell]

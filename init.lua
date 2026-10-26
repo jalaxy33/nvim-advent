@@ -38,4 +38,4 @@ vim.cmd("packadd nvim.difftool") -- `:DiffTool {left} {right}`
 -- LSP
 -- ===================================
 
-require("core.lsp") -- setup LSP servers
+require("lsp.lsp") -- setup LSP servers
