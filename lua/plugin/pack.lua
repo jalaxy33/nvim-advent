@@ -44,8 +44,9 @@ load_plugin("gitsigns") -- git integration for buffer
 load_plugin("conform")
 
 -- Misc
-load_plugin("mini")         -- collections of plugins
-load_plugin("live-preview") -- preview Markdown/HTML in browser
+load_plugin("mini")           -- collections of plugins
+load_plugin("live-preview")   -- preview Markdown/HTML in browser
+load_plugin("ts-autotag")     -- auto close/rename html tags
 
 -- LSP
 load_plugin("nvim-treesitter") -- treesitter configs for more languages

@@ -35,6 +35,9 @@ end
 --- set auto-installed LSP ---
 local ensure_installed = {
   'lua-language-server',
+  'html-lsp',
+  'css-lsp',
+  'emmet-language-server',
   "oxfmt",
   "rumdl",
 }
