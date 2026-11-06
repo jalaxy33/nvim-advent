@@ -18,9 +18,9 @@
 
 -- Config LSP
 vim.lsp.config('emmet_language_server', {
-  settings = {
-    -- LSP settings go here
-  }
+  init_options = {
+    showSuggestionsAsSnippets = true,
+  },
 })
 
 
