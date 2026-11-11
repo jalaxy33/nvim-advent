@@ -48,10 +48,11 @@ vim.diagnostic.config({
 -- Enable LSP servers
 -- ===================================
 
-enable_lsp("lua")     -- [lua]
-enable_lsp("python")  -- [python]
-enable_lsp("rust")    -- [rust]
-enable_lsp("haskell") -- [haskell]
-enable_lsp("html")    -- [html]
-enable_lsp("css")     -- [css]
-enable_lsp("emmet")   -- [html, css, ...]
+enable_lsp("lua")        -- [lua]
+enable_lsp("python")     -- [python]
+enable_lsp("rust")       -- [rust]
+enable_lsp("haskell")    -- [haskell]
+enable_lsp("html")       -- [html]
+enable_lsp("css")        -- [css]
+enable_lsp("emmet")      -- [html, css, ...]
+enable_lsp("typescript") -- [javascript, typescript]
