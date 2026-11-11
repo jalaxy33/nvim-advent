@@ -38,6 +38,7 @@ local ensure_installed = {
   'html-lsp',
   'css-lsp',
   'emmet-language-server',
+  'typescript-language-server',
   "oxfmt",
   "rumdl",
 }
