@@ -7,7 +7,13 @@ local mini_snippets = require('mini.snippets')
 local gen_loader = mini_snippets.gen_loader
 
 mini_snippets.setup({
-  snippets = { gen_loader.from_lang() },
+  snippets = {
+    gen_loader.from_lang({
+      -- html: read only own `snippets/html/` files, skip friendly-snippets
+      -- collection. Emmet already expands every tag and its attributes.
+      lang_patterns = { html = { 'html/**/*.json', 'html/**/*.lua' } },
+    }),
+  },
 
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
