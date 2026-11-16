@@ -1,26 +1,21 @@
 -- configs for `javascript` and `typescript` (.js, .jsx, .ts, .tsx, .mjs, .cjs)
 --
--- LSP provided by [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server)
--- Install it globally with `npm install -g typescript typescript-language-server`,
--- or install by mason `:MasonInstall typescript-language-server`
+-- LSP provided by [tsc](https://github.com/microsoft/typescript)
+-- Install by mason `:MasonInstall tsc`, or globally with `npm install -g typescript`.
+-- Needs TypeScript 7.0+, where `tsc --lsp` exists.
 --
--- Gives completion, hover, diagnostics, rename, and whole-file actions such as
--- organize imports (`:LspTypescriptSourceAction`).
+-- Gives completion, hover, diagnostics, rename, and inlay hints.
 --
--- The server picks its own project root from lock files
--- (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `bun.lock*`), so no
--- root is set here. Add a `tsconfig.json` / `jsconfig.json` to a project to
--- tell it how to typecheck.
+-- `nvim-lspconfig` handles the details: it prefers `<root>/node_modules/.bin/tsc`,
+-- then `tsc`, then `tsgo`, and skips binaries without `--lsp`. The root is the
+-- nearest package manager lock file, so one server covers a monorepo.
 --
 
 
 -- Config LSP
-vim.lsp.config('ts_ls', {
+vim.lsp.config('tsc', {
   settings = {
-    typescript = {
-      -- server settings go here
-    },
-    javascript = {
+    ['js/ts'] = {
       -- server settings go here
     },
   },
@@ -28,4 +23,4 @@ vim.lsp.config('ts_ls', {
 
 
 -- Enable LSP
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('tsc')
