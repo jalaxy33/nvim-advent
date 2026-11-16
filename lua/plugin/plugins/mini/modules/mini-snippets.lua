@@ -43,5 +43,7 @@ mini_snippets.setup({
   },
 })
 
-
+-- Show snippets in completion. `match = false` gives all snippets of the
+-- current language, so the completion engine filters and sorts them.
+mini_snippets.start_lsp_server({ match = false })
 
