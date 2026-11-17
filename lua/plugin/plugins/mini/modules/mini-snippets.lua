@@ -8,16 +8,7 @@ local gen_loader = mini_snippets.gen_loader
 
 mini_snippets.setup({
   snippets = {
-    gen_loader.from_lang({
-      -- Only own `snippets/js-ts.json`, shared by js and ts. No third-party
-      -- collection: a whole one adds hundreds of items to the completion menu.
-      lang_patterns = {
-        javascript = { 'js-ts.json' },
-        javascriptreact = { 'js-ts.json' },
-        typescript = { 'js-ts.json' },
-        typescriptreact = { 'js-ts.json' },
-      },
-    }),
+    gen_loader.from_lang(),
   },
 
   -- Module mappings. Use `''` (empty string) to disable one.
@@ -55,6 +46,6 @@ mini_snippets.setup({
 })
 
 -- Show snippets in completion. `match = false` sends all of the language's
--- snippets and lets the completion engine filter and sort them, which is fine
--- for a hand-written file.
+-- snippets and lets the completion engine filter and sort them. Only a couple
+-- of own `snippets/` files are loaded, so there is nothing to filter out.
 mini_snippets.start_lsp_server({ match = false })
