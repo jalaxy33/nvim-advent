@@ -18,6 +18,7 @@ local mini_completion = require("mini.completion")
 local snippet_client, body_label = {}, {}
 
 local function is_snippet_client(client_id)
+  if client_id == nil then return false end
   local res = snippet_client[client_id]
   if res == nil then
     local client = vim.lsp.get_client_by_id(client_id)
@@ -41,22 +42,33 @@ local function display_label(body)
   return label
 end
 
-local function snippet_body_label(items, base)
+local function process_items(items, base)
   local res = mini_completion.default_process_items(items, base)
+
+  -- `mini.snippets` offers every snippet of the language, so short prefixes win
+  -- the fuzzy sort against the LSP items. Put them below the LSP items, keeping
+  -- the order inside each group. Other snippet sources (emmet) stay untouched.
+  local lsp_items, snippet_items = {}, {}
   for _, item in ipairs(res) do
-    if item.detail and is_snippet_client(item.client_id) then
-      local label = display_label(item.detail)
-      if label then
-        item.filterText = item.filterText or item.label
-        item.label = label
+    if is_snippet_client(item.client_id) then
+      if item.detail then
+        local label = display_label(item.detail)
+        if label then
+          item.filterText = item.filterText or item.label
+          item.label = label
+        end
       end
+      table.insert(snippet_items, item)
+    else
+      table.insert(lsp_items, item)
     end
   end
-  return res
+
+  return vim.list_extend(lsp_items, snippet_items)
 end
 
 mini_completion.setup({
-  lsp_completion = { process_items = snippet_body_label },
+  lsp_completion = { process_items = process_items },
 })
 
 -- set completion capabilities
