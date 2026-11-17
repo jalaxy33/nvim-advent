@@ -71,7 +71,7 @@ vim.opt.isfname:append("@-@")                         -- allows - in filename
 vim.opt.pumheight = 10                                -- popup menu height
 vim.opt.pumblend = 10                                 -- popup menu transparent
 vim.opt.pumborder = 'rounded'                         -- set popup menu border style
-vim.opt.completeopt = "menuone,noselect,fuzzy,nosort" -- completion behaviors
+vim.opt.completeopt = "menuone,noselect,fuzzy"        -- completion behaviors
 vim.opt.winblend = 5                                  -- floating window transparency
 vim.opt.synmaxcol = 400                               -- syntax highlightlighting limit
 vim.opt.laststatus = 3                                -- allow full statusline
