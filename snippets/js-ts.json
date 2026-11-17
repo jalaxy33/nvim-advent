@@ -1,0 +1,20 @@
+{
+  "use strict": { "prefix": "uss", "body": "\"use strict\";$0" },
+
+  "console.log": { "prefix": "log", "body": [ "console.log($1);$0" ] },
+  "console.error": { "prefix": "loge", "body": [ "console.error($1);$0" ] },
+
+  "function": { "prefix": "fn", "body": [ "function ${1:name}(${2:args}) {", "  $0", "}" ] },
+  "async function": { "prefix": "afn", "body": [ "async function ${1:name}(${2:args}) {", "  $0", "}" ] },
+  "arrow function": { "prefix": "af", "body": [ "const ${1:name} = (${2:args}) => {", "  $0", "};" ] },
+
+  "import named": { "prefix": "imp", "body": [ "import { ${2:name} } from \"${1:module}\";$0" ] },
+  "import default": { "prefix": "impd", "body": [ "import ${2:name} from \"${1:module}\";$0" ] },
+  "export const": { "prefix": "exc", "body": [ "export const ${1:name} = $0;" ] },
+
+  "for of": { "prefix": "forof", "body": [ "for (const ${1:item} of ${2:items}) {", "  $0", "}" ] },
+  "try catch": { "prefix": "tryc", "body": [ "try {", "  $0", "} catch (err) {", "  console.error(err);", "}" ] },
+
+  "type": { "prefix": "type", "body": [ "type ${1:Name} = {", "  ${2:field}: ${3:string};", "};" ] },
+  "interface": { "prefix": "iface", "body": [ "interface ${1:Name} {", "  ${2:field}: ${3:string};", "}" ] }
+}

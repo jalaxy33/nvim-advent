@@ -9,9 +9,14 @@ local gen_loader = mini_snippets.gen_loader
 mini_snippets.setup({
   snippets = {
     gen_loader.from_lang({
-      -- html: read only own `snippets/html/` files, skip friendly-snippets
-      -- collection. Emmet already expands every tag and its attributes.
-      lang_patterns = { html = { 'html/**/*.json', 'html/**/*.lua' } },
+      -- Only own `snippets/js-ts.json`, shared by js and ts. No third-party
+      -- collection: a whole one adds hundreds of items to the completion menu.
+      lang_patterns = {
+        javascript = { 'js-ts.json' },
+        javascriptreact = { 'js-ts.json' },
+        typescript = { 'js-ts.json' },
+        typescriptreact = { 'js-ts.json' },
+      },
     }),
   },
 
@@ -49,7 +54,7 @@ mini_snippets.setup({
   },
 })
 
--- Show snippets in completion. `match = false` gives all snippets of the
--- current language, so the completion engine filters and sorts them.
+-- Show snippets in completion. `match = false` sends all of the language's
+-- snippets and lets the completion engine filter and sort them, which is fine
+-- for a hand-written file.
 mini_snippets.start_lsp_server({ match = false })
-
