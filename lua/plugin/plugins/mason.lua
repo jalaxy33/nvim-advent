@@ -40,7 +40,7 @@ local ensure_installed = {
   'emmet-language-server',
   "oxfmt",
   "rumdl",
-  "biome",
+  "oxlint",
 }
 
 if vim.g.treesitter_autoinstall then
