@@ -16,7 +16,12 @@ vim.pack.add({
 })
 
 --- Setup ---
-require("fzf-lua").setup({})
+require("fzf-lua").setup({
+  fzf_opts = {
+    -- wrap around when moving past the first/last entry
+    ["--cycle"] = true,
+  },
+})
 
 
 --- Keymaps ---
