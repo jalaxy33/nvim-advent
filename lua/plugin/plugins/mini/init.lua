@@ -31,8 +31,6 @@ end
 -- statusline
 require('mini.statusline').setup()
 
--- autopairs
--- require("mini.pairs").setup()
 
 -- extend a/i behaviors
 require("mini.ai").setup()
@@ -65,3 +63,6 @@ load_module("mini-snippets")
 
 -- which-key (Show next key clues)
 load_module("mini-clue")
+
+-- autopairs
+load_module("mini-pairs")
