@@ -96,9 +96,17 @@ If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](http
 
 ## Conventions
 
-Commit subjects are one imperative sentence, capitalised, without a trailing
-period: say which thing changed, never just `update` or `fix`. Run this once per
-clone so `.githooks/commit-msg` rejects vague subjects:
+Commit subjects read `topic: one-line description` — lowercase topic naming the
+area touched, then an imperative sentence, no trailing period:
+
+```
+keymaps: Add map to close all buffers
+lsp: Move server modules into lua/lsp/langs
+mini: Drop custom completion item processing
+docs: Document tree-sitter-cli requirement
+```
+
+Run this once per clone so `.githooks/commit-msg` rejects other shapes:
 
 ```sh
 git config core.hooksPath .githooks

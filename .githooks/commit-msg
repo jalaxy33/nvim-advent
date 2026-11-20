@@ -1,5 +1,5 @@
 #!/bin/sh
-# Reject commit messages that do not say what changed.
+# Enforce commit subjects of the form "topic: one-line description".
 # Enabled by `git config core.hooksPath .githooks`; bypass with --no-verify.
 set -eu
 
@@ -20,24 +20,44 @@ esac
 [ "${#subject}" -le 72 ] || fail "subject is ${#subject} chars, keep it under 72"
 
 case "$subject" in
-  *.) fail "drop the trailing period" ;;
+  *": "*) ;;
+  *) fail "use 'topic: one-line description', e.g. 'keymaps: Add close-all-buffers map'" ;;
+esac
+
+topic=${subject%%:*}
+desc=${subject#*: }
+
+case "$topic" in
+  [a-z]*) ;;
+  *) fail "topic '$topic' must start with a lowercase letter" ;;
+esac
+case "$topic" in
+  *[!a-z0-9._-]*) fail "topic '$topic' may only contain a-z, 0-9, '.', '_' and '-'" ;;
+esac
+case "$topic" in
+  update|updates|fix|fixes|wip|tmp|temp|misc|stuff|things|changes|change|minor|tweaks|cleanup|improve|refactor|test|tests|chore)
+    fail "topic '$topic' says nothing, name the area you touched" ;;
+esac
+
+case "$desc" in
   [A-Z]*) ;;
-  *) fail "start the subject with a capital letter" ;;
+  *) fail "start the description with a capital letter" ;;
+esac
+case "$desc" in
+  *.) fail "drop the trailing period" ;;
 esac
 
-lower=$(printf '%s' "$subject" | tr '[:upper:]' '[:lower:]')
-
+lower=$(printf '%s' "$desc" | tr '[:upper:]' '[:lower:]')
 case "$lower" in
-  update|updates|fix|fixes|wip|tmp|temp|test|tests|change|changes|misc|stuff|things|minor|tweaks|cleanup|improve|refactor)
-    fail "'$subject' says nothing, name the thing you changed" ;;
+  update|updates|fix|fixes|wip|tmp|temp|test|tests|changes|change|misc|stuff|things|minor|tweaks|cleanup|improve|refactor)
+    fail "description '$desc' says nothing, name the thing you changed" ;;
 esac
-
 case "$lower" in
   "update "*|"fix "*|"improve "*|"change "*|"tweak "*|"clean "*)
     rest=${lower#* }
     case "$rest" in
       it|this|that|code|file|files|config|configs|configuration|stuff|things|change|changes|bug|bugs|issue|issues|typos)
-        fail "'$subject' says nothing, name the thing you changed" ;;
+        fail "description '$desc' says nothing, name the thing you changed" ;;
     esac
     ;;
 esac
