@@ -1,0 +1,45 @@
+#!/bin/sh
+# Reject commit messages that do not say what changed.
+# Enabled by `git config core.hooksPath .githooks`; bypass with --no-verify.
+set -eu
+
+subject=$(grep -v '^#' "$1" | sed '/^[[:space:]]*$/d' | head -n 1 || true)
+
+fail() {
+  echo "commit-msg: $1" >&2
+  exit 1
+}
+
+[ -n "$subject" ] || fail "empty commit message"
+
+# Generated and merge commits are not written by hand.
+case "$subject" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *|amend!\ *) exit 0 ;;
+esac
+
+[ "${#subject}" -le 72 ] || fail "subject is ${#subject} chars, keep it under 72"
+
+case "$subject" in
+  *.) fail "drop the trailing period" ;;
+  [A-Z]*) ;;
+  *) fail "start the subject with a capital letter" ;;
+esac
+
+lower=$(printf '%s' "$subject" | tr '[:upper:]' '[:lower:]')
+
+case "$lower" in
+  update|updates|fix|fixes|wip|tmp|temp|test|tests|change|changes|misc|stuff|things|minor|tweaks|cleanup|improve|refactor)
+    fail "'$subject' says nothing, name the thing you changed" ;;
+esac
+
+case "$lower" in
+  "update "*|"fix "*|"improve "*|"change "*|"tweak "*|"clean "*)
+    rest=${lower#* }
+    case "$rest" in
+      it|this|that|code|file|files|config|configs|configuration|stuff|things|change|changes|bug|bugs|issue|issues|typos)
+        fail "'$subject' says nothing, name the thing you changed" ;;
+    esac
+    ;;
+esac
+
+exit 0

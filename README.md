@@ -94,6 +94,16 @@ If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](http
 - [Plugin Management](docs/guides/plugin_management.md)
 - [Configure LSP & formatters](docs/guides/lsp_and_formatter.md)
 
+## Conventions
+
+Commit subjects are one imperative sentence, capitalised, without a trailing
+period: say which thing changed, never just `update` or `fix`. Run this once per
+clone so `.githooks/commit-msg` rejects vague subjects:
+
+```sh
+git config core.hooksPath .githooks
+```
+
 ## Inspirations
 
 - TJ DeVries - [Advent of Neovim](https://youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM&si=mRYcshdbfi_J0FKo) series
