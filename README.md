@@ -94,24 +94,6 @@ If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](http
 - [Plugin Management](docs/guides/plugin_management.md)
 - [Configure LSP & formatters](docs/guides/lsp_and_formatter.md)
 
-## Conventions
-
-Commit subjects read `topic: one-line description` — lowercase topic naming the
-area touched, then an imperative sentence, no trailing period:
-
-```
-keymaps: Add map to close all buffers
-lsp: Move server modules into lua/lsp/langs
-mini: Drop custom completion item processing
-docs: Document tree-sitter-cli requirement
-```
-
-Run this once per clone so `.githooks/commit-msg` rejects other shapes:
-
-```sh
-git config core.hooksPath .githooks
-```
-
 ## Inspirations
 
 - TJ DeVries - [Advent of Neovim](https://youtube.com/playlist?list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM&si=mRYcshdbfi_J0FKo) series

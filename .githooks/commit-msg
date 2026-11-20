@@ -1,6 +1,6 @@
 #!/bin/sh
 # Enforce commit subjects of the form "topic: one-line description".
-# Enabled by `git config core.hooksPath .githooks`; bypass with --no-verify.
+# Enable with `git config core.hooksPath .githooks`; bypass with --no-verify.
 set -eu
 
 subject=$(grep -v '^#' "$1" | sed '/^[[:space:]]*$/d' | head -n 1 || true)
