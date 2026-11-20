@@ -75,6 +75,7 @@ end, { desc = "Toggle Builtin Undotree" })
 -- buffers
 vim.keymap.set('n', "bn", "<cmd>enew<cr>", { desc = "New Buffer" })
 vim.keymap.set('n', "bx", "<cmd>bdelete<cr>", { desc = "Close Buffer" })
+vim.keymap.set('n', "bX", "<cmd>%bdelete<cr>", { desc = "Close All Buffers" })
 vim.keymap.set("n", "b[", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "b]", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "bs", "<cmd>buffers<cr>", { desc = "Show all buffers" })
