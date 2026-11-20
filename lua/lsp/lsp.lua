@@ -56,4 +56,4 @@ enable_lsp("html")       -- [html]
 enable_lsp("css")        -- [css]
 enable_lsp("emmet")      -- [html, css, ...]
 enable_lsp("typescript") -- [javascript, typescript] (tsc)
-enable_lsp("oxlint")     -- [javascript, typescript] (lint)
+enable_lsp("biome")       -- [javascript, typescript, ...] (lint)

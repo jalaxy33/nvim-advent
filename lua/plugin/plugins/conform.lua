@@ -32,15 +32,15 @@ Conform.setup({
     -- languages
     markdown = { "rumdl" },
     python = { "ruff_format" },
-    -- all-in-one (prettier/oxfmt)
-    css = { "oxfmt" },
-    html = { "oxfmt" },
-    javascript = { "oxfmt" },
-    javascriptreact = { "oxfmt" },
-    typescript = { "oxfmt" },
-    typescriptreact = { "oxfmt" },
-    json = { "oxfmt" },
-    vue = { "oxfmt" },
+    -- all-in-one (biome)
+    css = { "biome" },
+    html = { "biome" },
+    javascript = { "biome" },
+    javascriptreact = { "biome" },
+    typescript = { "biome" },
+    typescriptreact = { "biome" },
+    json = { "biome" },
+    vue = { "biome" },
   },
   default_format_opts = {
     lsp_format = "fallback",
@@ -62,10 +62,8 @@ Conform.formatters = {
   shfmt = {
     -- set bash/zsh indent to % spaces
     append_args = { "-i", "2" },
-  }
-
+  },
 }
-
 
 --- Keymaps ---
 

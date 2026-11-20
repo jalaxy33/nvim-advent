@@ -38,9 +38,8 @@ local ensure_installed = {
   'html-lsp',
   'css-lsp',
   'emmet-language-server',
-  "oxfmt",
+  "biome",
   "rumdl",
-  "oxlint",
 }
 
 if vim.g.treesitter_autoinstall then

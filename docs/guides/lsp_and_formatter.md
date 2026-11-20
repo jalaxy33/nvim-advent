@@ -61,7 +61,7 @@ Find formatter → Install → lua/plugin/plugins/conform.lua (formatters_by_ft)
 1. Find the formatter name in `:h conform-formatters` or the
    [formatter list](https://github.com/stevearc/conform.nvim#formatters).
 
-2. Install it globally or with mason: `:MasonInstall oxfmt`.
+2. Install it globally or with mason: `:MasonInstall biome`.
 
    To auto-install on new machines, add it to `ensure_installed` in
    `lua/plugin/plugins/mason.lua`:
@@ -69,7 +69,7 @@ Find formatter → Install → lua/plugin/plugins/conform.lua (formatters_by_ft)
    ```lua
    local ensure_installed = {
      -- ...existing...
-     "oxfmt",
+     "biome",
    }
    ```
 
@@ -80,7 +80,7 @@ Find formatter → Install → lua/plugin/plugins/conform.lua (formatters_by_ft)
    Conform.setup({
      formatters_by_ft = {
        -- ...
-       javascript = { "oxfmt" },
+       javascript = { "biome" },
        markdown = { "rumdl" },
        python = { "ruff_format" },
      },
