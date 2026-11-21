@@ -90,6 +90,15 @@ If you are using NixOS, to enable dynamic linker. please make sure [nix-ld](http
   nvim
   ```
 
+- (Optional) Enable the commit message hook if you plan to commit changes to this config
+  (e.g. in your own fork). It enforces `topic: One-line description`:
+
+  ```sh
+  git config core.hooksPath .githooks
+  ```
+
+  Run it inside the config folder; `git commit --no-verify` skips it once.
+
 ## Documentations
 
 - [Plugin Management](docs/guides/plugin_management.md)
